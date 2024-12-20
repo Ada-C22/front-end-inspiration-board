@@ -2,12 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Vision Board</title>
   </head>
   <body>
     <div id="root"></div>
+    
+    <section id="boardsListContainer">
+      <h1> Boards</h1>
+      <ul id="boardList">
+        <li> <href>{BoardName}</href></li>
+        <li> <href>{BoardName}</href></li>
+        <li> <href>{BoardName}</href></li>
+        <button>Add Board</button>
+      </ul>
+
+    </section>
+    
+    <section id="addCardContainer">
+      <h1>Add a card</h1>
+      <form>
+        <label id="name">Name</label>
+        <input type="text" name="name">
+        <label id="name">Message</label>
+        <input type="text" name="card_message">
+      </form>
+
+    </section>
+
+    <section id="activeBoardContainer">
+      <h1 id="activeBoardName"> Active Board Name</h1>
+      <h3 id="activeBoardAuthor"> Author: Jane Doe</h3>
+      <ul id= "ABCardContainer">
+        <li class="individualCard"> 
+          <h3> card name</h3>
+          <h4> card author</h4>
+          <span>{likeCount}<button> like</button></span>
+          <button>Delete</button>
+          <button>Edit</button>
+        </li>
+
+      </ul>
+
+    </section>
+    
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
