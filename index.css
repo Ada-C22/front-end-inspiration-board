@@ -11,14 +11,21 @@ body{
 
 }
 
-#activeBoardContainer{
-  background-color: beige;
 
-}
 
 li {
   list-style-type: none;
 }
+
+#activeBoardContainer{
+  background-color: beige;
+}
+
+#ABCardContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
 
 .individualCard{
   background-color:lightsteelblue;
