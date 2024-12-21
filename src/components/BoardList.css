@@ -1,0 +1,22 @@
+.BoardListBox{
+  display: flex;
+  flex-direction: column;
+  background-color: burlywood;
+
+}
+
+.visionBoardListTitle{
+  display:flex;
+  flex-direction: column;
+  border-spacing:15px;
+}
+
+
+.BoardList {
+  display: flex; 
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
