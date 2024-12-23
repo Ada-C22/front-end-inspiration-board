@@ -8,15 +8,6 @@
   flex: 1 1;
 } */
 
-.individual-card{
-  background-color:lightsteelblue;
-  width: 300px;
-  height: 300px;
-  padding: 20px; 
-  text-align: center;
-  border: 1px solid gray;
-}
-
 h2{
   font-size:15px;
 }
