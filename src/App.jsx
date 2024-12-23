@@ -5,6 +5,7 @@ import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 import boardOneCards from './data/boardOneCards';
+import CardForm from './components/CardForm'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
@@ -78,6 +79,12 @@ function App() {
     getActiveBoard()
   }
 
+  const addCard = (card) => {
+    setActiveBoardData(prevState => ({
+      ...prevState,
+      cards: [...prevState.cards, card]
+    }))
+  }
 
   return (
     <>
@@ -85,6 +92,7 @@ function App() {
       <BoardList 
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}/>
+      <CardForm addCard={addCard}/>  
       <ActiveBoard 
         ActiveBoard={activeBoardData}/>
     </>
