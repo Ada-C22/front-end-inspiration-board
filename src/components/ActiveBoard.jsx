@@ -1,5 +1,7 @@
 import Card from './Card'
 import PropTypes from 'prop-types'
+import './Card.css'
+import './ActiveBoard.css'
 
   const ActiveBoard = (props) => {
     const getActiveBoardCards = (cards) => {
@@ -17,7 +19,7 @@ import PropTypes from 'prop-types'
   return <section className ="ActiveBoardContainer">
     <h1 className ="activeBoardName">{props.ActiveBoard.title}</h1>
     <h3 className ="activeBoardAuthor"> {props.ActiveBoard.owner}</h3> 
-    <ul className="ABCardContainer">{getActiveBoardCards(props.ActiveBoard.cards)}</ul>
+    <ul className="ab-card-container">{getActiveBoardCards(props.ActiveBoard.cards)}</ul>
   </section>
   }
 
