@@ -52,9 +52,10 @@ const convertCardFromApi = (apiCard) => {
 
 
 function App() {
-  const [activeBoardId, setActiveBoardId] = useState(1)
-  const [activeBoardData, setActiveBoardData] = useState(boardOneCards)
-  const [boardsData, setBoardsData] = useState([])
+  const [activeBoardId, setActiveBoardId] = useState(1);
+  const [activeBoardData, setActiveBoardData] = useState(boardOneCards);
+  const [boardsData, setBoardsData] = useState([]);
+  const [sortOption, setSortOption] = useState('id');
   
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -92,6 +93,27 @@ function App() {
         getActiveBoard(); // Refresh the active board to show the new card
       });
   };
+
+  const handleSortChange = (event) => {
+    setSortOption(event.target.value);
+    sortCards(event.target.value);
+  };
+
+  const sortCards = (sortOption) => {
+    const sortedCards = [...activeBoardData.cards];
+    if (sortOption === 'id') {
+      sortedCards.sort((a, b) => a.id - b.id);
+    } else if (sortOption === 'likes') {
+      sortedCards.sort((a, b) => b.likesCount - a.likesCount);
+    } else if (sortOption === 'alphabetically') {
+      sortedCards.sort((a, b) => a.message.localeCompare(b.message));
+    }
+
+    setActiveBoardData(prevState => ({
+      ...prevState,
+      cards: sortedCards
+    }));
+  }
   
 
   return (
@@ -101,6 +123,14 @@ function App() {
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}/>
       <CardForm addCard={addCard}/>  
+      <div>
+        <label htmlFor="sort">Sort Cards by:</label>
+        <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
+          <option value='id'>ID</option>
+          <option value='likes'>Likes</option>
+          <option value='alphabetically'>Alphabetically</option>
+        </select>
+      </div>
       <ActiveBoard 
         ActiveBoard={activeBoardData}/>
     </>
