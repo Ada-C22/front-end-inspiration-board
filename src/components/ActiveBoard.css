@@ -1,0 +1,18 @@
+.ab-card-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+/* .ab-card-conttainer > .individual-card {
+  flex: 1 1;
+} */
+
+h2{
+  font-size:15px;
+}
+
+.active-board-container{
+  background-color: beige;
+}
+
