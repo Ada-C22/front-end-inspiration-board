@@ -1,4 +1,27 @@
-#ab-card-container{
-  display: flex;
-  justify-content: space-around;
+.ab-card-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
+
+/* .ab-card-conttainer > .individual-card {
+  flex: 1 1;
+} */
+
+.individual-card{
+  background-color:lightsteelblue;
+  width: 300px;
+  height: 300px;
+  padding: 20px; 
+  text-align: center;
+  border: 1px solid gray;
+}
+
+h2{
+  font-size:15px;
+}
+
+.active-board-container{
+  background-color: beige;
+}
+

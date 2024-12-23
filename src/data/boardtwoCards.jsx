@@ -5,27 +5,27 @@ const boardTwoCards = [
     owner: 'Harry Ceramics',
     cards: [
       {id: 4,
-        // author: 'Mernioanie Hrangers'
+        owner: 'Mernioanie Hrangers,'
         message: 'It is leviosaaaa not leviosuhhhh',
         likesCount: 24,
         boardId: 2
       },
       {
         id:4,
-        // author: 'Baldiemort',
+        owner: 'Baldiemort',
         message: 'BLADAHCADABAHS',
         likesCount: 2,
         boardId: 2
       },
       {
         id:5,
-        // author: 'Don Reasliee',
+        owner: 'Don Reasliee',
         message: 'looks sheepish',
         likesCount: 2,
         boardId: 2
       },
       {cardId:6,
-        // author: 'Bumbledoore',
+        owner: 'Bumbledoore',
         message: 'eats booger bertie botz',
         likesCount: 2,
         boardId: 2

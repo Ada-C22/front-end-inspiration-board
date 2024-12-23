@@ -1,24 +1,25 @@
 import Card from './Card'
 import PropTypes from 'prop-types'
-import './Card.css'
+// import './Card.css'
 import './ActiveBoard.css'
 
   const ActiveBoard = (props) => {
     const getActiveBoardCards = (cards) => {
       return cards.map((card) => {
         return (
-          <Card className="individualCard"
-            key={card.id}
-            id={card.id}
-            owner={card.owner}
-            message={card.message}
-          />
+            <Card
+              key={card.id}
+              id={card.id}
+              owner={card.owner}
+              message={card.message}
+              likesCount={card.likesCount}
+            />
         );
       });
   };
-  return <section className ="ActiveBoardContainer">
-    <h1 className ="activeBoardName">{props.ActiveBoard.title}</h1>
-    <h3 className ="activeBoardAuthor"> {props.ActiveBoard.owner}</h3> 
+  return <section className ="active-board-container">
+    <h1 className ="active-board-name">{props.ActiveBoard.title}</h1>
+    <h3 className ="active-board-author"> {props.ActiveBoard.owner}</h3> 
     <ul className="ab-card-container">{getActiveBoardCards(props.ActiveBoard.cards)}</ul>
   </section>
   }
