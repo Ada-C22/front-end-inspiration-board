@@ -2,12 +2,11 @@ import PropTypes from 'prop-types'
 import './BoardList.css'
 
 
-const BoardList = ({Boards}) => {
-  console.log(Boards)
+const BoardList = ({Boards, handleChangeActiveBoard}) => {
   const getVisionBoardList= (boards) => {
     return boards.map((board) => {
       return (
-        <li className="Board">{board.title} | {board.owner}</li>
+        <li key={board.id} className="Board"><button>{board.title} | {board.owner}</button></li>
       );
     });
   };
@@ -26,7 +25,8 @@ BoardList.propTypes= {
         title: PropTypes.string.isRequired,
         owner: PropTypes.string.isRequired,
       }).isRequired
-    ).isRequired
-  }    
+    ).isRequired,
+    handleChangeActiveBoard: PropTypes.func.isRequired,     
+    }    
 
   export default BoardList

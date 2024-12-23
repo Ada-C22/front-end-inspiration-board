@@ -1,11 +1,25 @@
 const twoBoardList =[
-  { boardId: 1,
-    title: 'Green Gable Dreams', 
+  { id: 1,
     owner: 'Anne Gables',
+    title: 'Green Gable Dreams', 
+    cards: [{}]
+    ,
   },
-  {boardId:2,
+  {id:2,
+  owner:'Harry Ceramics',
   title: 'Hogwash', 
-  owner: 'Harry Ceramics',
+  cards:[{}]
   },]
 
 export default twoBoardList
+
+
+
+// api call for board info 
+
+// {
+//   "id": board.id,
+//   "owner": board.owner,
+//   "title": board.title,
+//   "cards": [card.to_dict() for card in board.cards]
+// }

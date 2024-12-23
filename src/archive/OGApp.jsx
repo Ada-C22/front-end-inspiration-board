@@ -1,13 +1,31 @@
 import { useState, useEffect } from 'react'
 import BoardList from'./components/BoardList'
 import React from 'react'
+import twoBoardList from './data/twoBoards'
 import axios from 'axios'
+
 import ActiveBoard from './components/ActiveBoard'
+// import boardOneCards from './data/boardOneCards'
 import './App.css'
-import boardOneCards from './data/boardOneCards';
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
+// const createBoardApi = () => {
+//   const createBoardEndpoint = apiEndpointLink + '/boards'
+//   console.log(createBoardEndpoint)
+//   return axios.post(createBoardEndpoint,newBoard)
+//   .then((response) =>console.log(response))
+//   .catch((error) => console.error(error));
+// };
+
+// const createCardApi = (boardId) => {
+//   console.log(boardId.toString())
+//   const createCardEndpoint = apiEndpointLink+'/boards'+'/'+(boardId.toString()) +'/cards'
+//   console.log(createCardEndpoint)
+//   // return axios.post(createCardEndpoint,newCard)
+//   // .then((response) => console.log(response))
+//   // .catch((error) => console.error(error));  
+// };
 const getBoardsApi = () => {
   const getBoardsEnpoint = apiEndpointLink + '/boards'
   return axios.get(getBoardsEnpoint)
@@ -48,11 +66,9 @@ const convertCardFromApi = (apiCard) => {
   return jsCard
   };
 
-
-
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1)
-  const [activeBoardData, setActiveBoardData] = useState(boardOneCards)
+  const [activeBoardData, setActiveBoardData] = useState([])
   const [boardsData, setBoardsData] = useState([])
   
   const getBoardsList = () => {
@@ -79,14 +95,19 @@ function App() {
   }
 
 
+
+  // const activeBoard = 1
+  // const defaultBoard = threeSampleBoardsData[0]
+  // const [activeBoard, setActiveBoard] = useState(boardOneCards)
+  // getActiveBoardApi(activeBoard)
   return (
     <>
       <h1>Vision Board</h1>
       <BoardList 
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}/>
-      <ActiveBoard 
-        ActiveBoard={activeBoardData}/>
+      {/* <ActiveBoard 
+        ActiveBoard={activeBoardData}/> */}
     </>
   )
 }

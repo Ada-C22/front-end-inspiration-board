@@ -4,19 +4,42 @@ const boardTwoCards = [
     title: 'Hogwash', 
     owner: 'Harry Ceramics',
     cards: [
-      {cardId:4,
-        author: 'Germionie Hranger',
+      {id: 4,
+        // author: 'Mernioanie Hrangers'
         message: 'It is leviosaaaa not leviosuhhhh',
+        likesCount: 24,
+        boardId: 2
       },
-      {cardId:5,
-        author: 'Don Reasliee',
+      {
+        id:4,
+        // author: 'Baldiemort',
+        message: 'BLADAHCADABAHS',
+        likesCount: 2,
+        boardId: 2
+      },
+      {
+        id:5,
+        // author: 'Don Reasliee',
         message: 'looks sheepish',
+        likesCount: 2,
+        boardId: 2
       },
       {cardId:6,
-        author: 'Bumbledoore',
+        // author: 'Bumbledoore',
         message: 'eats booger bertie botz',
+        likesCount: 2,
+        boardId: 2
       }]
   }, 
 ]
 
 export default boardTwoCards
+
+
+//backend card structure 
+// {
+//   "id": self.id,
+//   "message": self.message,
+//   "likes_count": self.likes_count,
+//   "board_id": self.board_id
+// }

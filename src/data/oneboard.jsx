@@ -1,9 +1,8 @@
 const oneBoardList = [
-  {
-      "id": 1,
-      "owner": "Taty",
-      "title": "Travel inspo"
-  }
-]
+  { id: 1,
+    owner: 'Anne Gables',
+    title: 'Green Gable Dreams', 
+    cards: [{}],
+  }]
 
 export default oneBoardList

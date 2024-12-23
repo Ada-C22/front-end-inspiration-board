@@ -1,14 +1,14 @@
-const Card =({}) => {
-  return 
+const Card =({message,likeCount}) => {
+  return (
   <>
     <li class="individualCard"> 
-    <h3> card name</h3>
-    <h4> card author</h4>
+    <p>{message}</p>
     <span>{likeCount}<button> like</button></span>
     <button>Delete</button>
     <button>Edit</button>
     </li>
     </>
+)
 }
 
 export default Card
