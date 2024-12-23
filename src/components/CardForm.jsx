@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types'
+import './CardForm.css'
 
 const CardForm = ({ addCard }) => {
     const [formData, setFormData] = useState({
@@ -24,6 +26,8 @@ const CardForm = ({ addCard }) => {
     };
 
     return (
+        <section className='CardForm'>
+        <h2 className='CardFormTitle'>Add a Card</h2>
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="message">Message:</label>
@@ -49,7 +53,12 @@ const CardForm = ({ addCard }) => {
             </div>
             <button type="submit">Add Card</button>
         </form>
+        </section>
     );
+};
+
+CardForm.propTypes = {
+    addCard: PropTypes.func.isRequired
 };
 
 export default CardForm;
