@@ -80,11 +80,19 @@ function App() {
   }
 
   const addCard = (card) => {
-    setActiveBoardData(prevState => ({
-      ...prevState,
-      cards: [...prevState.cards, card]
-    }))
-  }
+    axios.post(`${apiEndpointLink}/boards/${activeBoardId}/cards`, card)
+      .then(response => {
+        setActiveBoardData(prevState => ({
+          ...prevState,
+          cards: [...prevState.cards, convertCardFromApi(response.data)]
+        }));
+      })
+      .catch(error => {
+        console.error('Error adding card:', error);
+        getActiveBoard(); // Refresh the active board to show the new card
+      });
+  };
+  
 
   return (
     <>

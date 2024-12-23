@@ -5,7 +5,7 @@ import './CardForm.css'
 const CardForm = ({ addCard }) => {
     const [formData, setFormData] = useState({
         message: '',
-        name: ''
+        owner: ''
     });
 
     const handleChange = (event) => {
@@ -21,7 +21,7 @@ const CardForm = ({ addCard }) => {
         addCard(formData);
         setFormData({
             message: '',
-            name: ''
+            owner: ''
         });
     };
 
@@ -30,28 +30,28 @@ const CardForm = ({ addCard }) => {
         <h2 className='CardFormTitle'>Add a Card</h2>
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="message">Message:</label>
+                <label htmlFor='message'>Message:</label>
                 <input
-                    type="text"
-                    id="message"
-                    name="message"
+                    type='text'
+                    id='message'
+                    name='message'
                     value={formData.message}
                     onChange={handleChange}
                     required
                 />
             </div>
             <div>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor='Owner'>Name:</label>
                 <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    type='text'
+                    id='owner'
+                    name='owner'
+                    value={formData.owner}
                     onChange={handleChange}
                     required
                 />
             </div>
-            <button type="submit">Add Card</button>
+            <button type='submit'>Add Card</button>
         </form>
         </section>
     );
