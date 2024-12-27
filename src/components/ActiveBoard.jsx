@@ -13,6 +13,7 @@ import './ActiveBoard.css'
               owner={card.owner}
               message={card.message}
               likesCount={card.likesCount}
+              handleDeleteCard={props.handleDeleteCard}
             />
         );
       });
@@ -37,7 +38,8 @@ import './ActiveBoard.css'
       id: PropTypes.number.isRequired,
       owner: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-    })
+    }),
+    handleDeleteCard: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

@@ -50,6 +50,15 @@ const convertCardFromApi = (apiCard) => {
   };
 
 
+const deleteCardApi = (id) => {
+  const deleteCardEndpoint = apiEndpointLink + '/cards' + '/' + (id.toString())
+  return axios.delete(deleteCardEndpoint)
+  .catch(error=> {
+    console.log(error);
+  });
+
+}
+
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1);
@@ -115,6 +124,17 @@ function App() {
     }));
   }
   
+  const handleDeleteCard = (id) => {
+    deleteCardApi(id);
+    const newCards = activeBoardData.cards.filter((card) => {
+      return card.id !== id; 
+    });
+    activeBoardData.cards = newCards;
+    const updatedActiveBoardData = {
+      ... activeBoardData
+    }
+    setActiveBoardData(updatedActiveBoardData);
+  }
 
   return (
     <>
@@ -132,7 +152,8 @@ function App() {
         </select>
       </div>
       <ActiveBoard 
-        ActiveBoard={activeBoardData}/>
+        ActiveBoard={activeBoardData}
+        handleDeleteCard={handleDeleteCard}/>
     </>
   )
 }
