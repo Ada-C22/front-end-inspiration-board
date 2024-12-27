@@ -9,6 +9,9 @@ import CardForm from './components/CardForm'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
+
+/////////////////// helper functions for api calls/ rendering the page//////////////////////////////
+
 const getBoardsApi = () => {
   const getBoardsEnpoint = apiEndpointLink + '/boards'
   return axios.get(getBoardsEnpoint)
@@ -56,9 +59,11 @@ const deleteCardApi = (id) => {
   .catch(error=> {
     console.log(error);
   });
-
 }
 
+
+
+////////////////////////// APP //////////////////////////////
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1);
@@ -79,14 +84,13 @@ function App() {
     getActiveBoardApi(activeBoardId).then(board => {
       setActiveBoardData(board);
     });
-    };
+  };
   useEffect(()=> {
     getActiveBoard();
-  }, []);
+  }, [activeBoardId]);
   
   const handleChangeActiveBoard = (id) =>  {
-    setActiveBoardId(id)
-    getActiveBoard()
+    setActiveBoardId(id);
   }
 
   const addCard = (card) => {
@@ -137,11 +141,12 @@ function App() {
   }
 
   return (
-    <>
+    <div className='App'>
       <h1>Vision Board</h1>
       <BoardList 
         Boards={boardsData} 
-        handleChangeActiveBoard = {handleChangeActiveBoard}/>
+        handleChangeActiveBoard = {handleChangeActiveBoard}
+        activeBoardId={activeBoardId}/>
       <CardForm addCard={addCard}/>  
       <div>
         <label htmlFor="sort">Sort Cards by:</label>
@@ -154,7 +159,7 @@ function App() {
       <ActiveBoard 
         ActiveBoard={activeBoardData}
         handleDeleteCard={handleDeleteCard}/>
-    </>
+    </div>
   )
 }
 
