@@ -10,11 +10,13 @@ import './ActiveBoard.css'
             <Card
               key={card.id}
               id={card.id}
+              boardId={props.ActiveBoard.id}
               owner={card.owner}
               message={card.message}
               likesCount={card.likesCount}
               handleDeleteCard={props.handleDeleteCard}
               handleLikeCard={props.handleLikeCard}
+              handleEditCard={props.handleEditCard}
             />
         );
       });
@@ -42,6 +44,7 @@ import './ActiveBoard.css'
     }),
     handleDeleteCard: PropTypes.func.isRequired,
     handleLikeCard: PropTypes.func.isRequired,
+    handleEditCard: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

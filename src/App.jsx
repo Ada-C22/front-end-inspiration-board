@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import BoardList from'./components/BoardList'
-import React from 'react'
 import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
@@ -87,7 +86,7 @@ function App() {
   const [activeBoardData, setActiveBoardData] = useState(boardOneCards);
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
-  
+    
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
       setBoardsData(boards);
@@ -161,8 +160,6 @@ function App() {
   };
 
   const handleLikeCard = (id) => {
-    console.log(activeBoardData.cards)
-    console.log(id)
     const newData = activeBoardData.cards.map((card) => {
       if (card.id === id) {
         card.likesCount++;
@@ -175,6 +172,20 @@ function App() {
     handleSetActiveBoard(activeBoardData)
   };
 
+  const handleEditCard = (editedCardData) => {
+    const newData = activeBoardData.cards.map((card) => {
+      if (card.id === editedCardData.id) {
+        editedCardData
+      }
+      updateCardDataApi(editedCardData)
+      return card; 
+
+    });
+    activeBoardData.cards= newData; 
+    handleSetActiveBoard(activeBoardData)
+
+  }
+  
   return (
     <div className='App'>
       <h1>Vision Board</h1>
@@ -194,7 +205,9 @@ function App() {
       <ActiveBoard 
         ActiveBoard={activeBoardData}
         handleDeleteCard={handleDeleteCard}
-        handleLikeCard={handleLikeCard}/>
+        handleLikeCard={handleLikeCard}
+        handleEditCard={handleEditCard}
+        />
     </div>
   )
 }
