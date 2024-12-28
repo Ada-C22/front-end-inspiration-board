@@ -1,4 +1,4 @@
-import './card.css'
+import './Card.css'
 import PropTypes from 'prop-types'
 import CardForm from './CardForm';
 import React, { useState } from 'react';
