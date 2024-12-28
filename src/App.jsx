@@ -61,7 +61,24 @@ const deleteCardApi = (id) => {
   });
 }
 
+const convertCardForApi = (jsxCard) => {
+  const jsonCard = {
+    ... jsxCard, 
+    board_id : jsxCard.boardId, 
+    likes_count : jsxCard.likesCount 
+  };
+  return jsonCard
+};
 
+const updateCardDataApi = (cardData) => {
+  const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString())
+  const jsonCard = convertCardForApi(cardData)
+  return axios.patch(patchCardEndpoint,jsonCard)
+  .catch(error=> {
+    console.log(error);
+  });
+
+}
 
 ////////////////////////// APP //////////////////////////////
 
@@ -87,7 +104,7 @@ function App() {
   };
   useEffect(()=> {
     getActiveBoard();
-  }, [activeBoardId]);
+  }, [activeBoardId, activeBoardData]);
   
   const handleChangeActiveBoard = (id) =>  {
     setActiveBoardId(id);
@@ -127,6 +144,12 @@ function App() {
       cards: sortedCards
     }));
   }
+  const handleSetActiveBoard = (data) => {
+    const updatedActiveBoardData = {
+      ... data
+    }
+    setActiveBoardData(updatedActiveBoardData)};
+  
   
   const handleDeleteCard = (id) => {
     deleteCardApi(id);
@@ -134,11 +157,23 @@ function App() {
       return card.id !== id; 
     });
     activeBoardData.cards = newCards;
-    const updatedActiveBoardData = {
-      ... activeBoardData
-    }
-    setActiveBoardData(updatedActiveBoardData);
-  }
+    handleSetActiveBoard(activeBoardData)
+  };
+
+  const handleLikeCard = (id) => {
+    console.log(activeBoardData.cards)
+    console.log(id)
+    const newData = activeBoardData.cards.map((card) => {
+      if (card.id === id) {
+        card.likesCount++;
+      }
+      updateCardDataApi(card)
+      return card;
+
+    });
+    activeBoardData.cards = newData; 
+    handleSetActiveBoard(activeBoardData)
+  };
 
   return (
     <div className='App'>
@@ -158,7 +193,8 @@ function App() {
       </div>
       <ActiveBoard 
         ActiveBoard={activeBoardData}
-        handleDeleteCard={handleDeleteCard}/>
+        handleDeleteCard={handleDeleteCard}
+        handleLikeCard={handleLikeCard}/>
     </div>
   )
 }

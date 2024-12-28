@@ -14,6 +14,7 @@ import './ActiveBoard.css'
               message={card.message}
               likesCount={card.likesCount}
               handleDeleteCard={props.handleDeleteCard}
+              handleLikeCard={props.handleLikeCard}
             />
         );
       });
@@ -40,6 +41,7 @@ import './ActiveBoard.css'
       title: PropTypes.string.isRequired,
     }),
     handleDeleteCard: PropTypes.func.isRequired,
+    handleLikeCard: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard
