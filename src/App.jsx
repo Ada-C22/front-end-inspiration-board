@@ -79,13 +79,16 @@ const updateCardDataApi = (cardData) => {
 
 }
 
+
+
 ////////////////////////// APP //////////////////////////////
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1);
-  const [activeBoardData, setActiveBoardData] = useState(boardOneCards);
+  const [activeBoardData, setActiveBoardData] = useState({});
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
+  const [activeBoardOpen,openActiveBoard] = useState(false)
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -107,6 +110,7 @@ function App() {
   
   const handleChangeActiveBoard = (id) =>  {
     setActiveBoardId(id);
+    openActiveBoard(true)
   }
 
   const addCard = (card) => {
@@ -193,22 +197,25 @@ function App() {
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}
         activeBoardId={activeBoardId}/>
-      <CardForm addCard={addCard}/>  
-      <div>
-        <label htmlFor="sort">Sort Cards by:</label>
-        <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
-          <option value='id'>ID</option>
-          <option value='likes'>Likes</option>
-          <option value='alphabetically'>Alphabetically</option>
-        </select>
+        {activeBoardOpen > 0 &&
+        <div className='active-board-container'>
+          <CardForm addCard={addCard}/>  
+          <div> 
+            <label htmlFor="sort">Sort Cards by:</label>
+            <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
+              <option value='id'>ID</option>
+              <option value='likes'>Likes</option>
+              <option value='alphabetically'>Alphabetically</option>
+            </select>
+          </div>
+          <ActiveBoard 
+            ActiveBoard={activeBoardData}
+            handleDeleteCard={handleDeleteCard}
+            handleLikeCard={handleLikeCard}
+            handleEditCard={handleEditCard}
+          />
+          </div>}
       </div>
-      <ActiveBoard 
-        ActiveBoard={activeBoardData}
-        handleDeleteCard={handleDeleteCard}
-        handleLikeCard={handleLikeCard}
-        handleEditCard={handleEditCard}
-        />
-    </div>
   )
 }
 
