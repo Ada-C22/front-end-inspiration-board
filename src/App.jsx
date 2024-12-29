@@ -4,7 +4,7 @@ import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 import CardForm from './components/CardForm'
-import BoardForm from './components/BoardForm'
+// import BoardForm from './components/BoardForm' // this is the form that is not rendering
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
@@ -286,7 +286,6 @@ function App() {
 
   };
   
-
   return (
     <div className='App'>
       <h1>Vision Board</h1>
@@ -295,8 +294,9 @@ function App() {
         handleChangeActiveBoard = {handleChangeActiveBoard}
         activeBoardId={activeBoardId}
         createBoardState={createBoardState}
-        setCreateBoardState={setCreateBoardState} />
-        <BoardForm handleCreateBoard={handleCreateBoard}/>
+        setCreateBoardState={setCreateBoardState}
+        handleCreateBoard={handleCreateBoard} />
+        {/* <BoardForm handleCreateBoard={handleCreateBoard}/> // this is the form that is not rendering */}
       {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
@@ -321,6 +321,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App
