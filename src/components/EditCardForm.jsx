@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types'
 
 
-const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,setEditing}) => {
+const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,setCardEditing}) => {
 
   const [formData, setFormData] = useState({
     id:id, 
@@ -29,11 +29,8 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
       message: formData.message,
       owner: formData.owner,
     }
-    handleEditCard(newCardInfo)
-    
-    console.log(`line 32 newCardInfo`, newCardInfo);
-    // handleEditCard(newCardInfo);
-    // setEditing(false);
+    handleEditCard(newCardInfo);
+    setCardEditing(false);
   };
 
   return (
@@ -77,7 +74,7 @@ EditCardForm.propTypes = {
   message: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired, 
   handleEditCard: PropTypes.func.isRequired,
-  setEditing: PropTypes.func.isRequired,
+  setCardEditing: PropTypes.func.isRequired,
 }
 
 

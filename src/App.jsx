@@ -3,7 +3,6 @@ import BoardList from'./components/BoardList'
 import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
-import boardOneCards from './data/boardOneCards';
 import CardForm from './components/CardForm'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
@@ -70,14 +69,16 @@ const convertCardForApi = (jsxCard) => {
 };
 
 const updateCardDataApi = (cardData) => {
-  const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString())
+  const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString());
   const jsonCard = convertCardForApi(cardData)
   return axios.patch(patchCardEndpoint,jsonCard)
-  .catch(error=> {
-    console.log(error);
-  });
+  .catch(error=> console.error(error));
 }
-
+const updateBoardTitleApi = (boardData) => {
+  const patchBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
+  return axios.put(patchBoardTitleEndpoint,({'title':boardData.title}))
+  .catch(error=> console.error(error));
+}
 
 
 ////////////////////////// APP //////////////////////////////
@@ -88,7 +89,6 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen,openActiveBoard] = useState(false)
-  const [cards, setCards] = useState([])
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -142,7 +142,6 @@ function App() {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
 
-    console.log(`line 148 set active board sort cards function`)
     setActiveBoardData(prevState => ({
       ...prevState,
       cards: sortedCards
@@ -153,7 +152,6 @@ function App() {
       ... data
     }
 
-    console.log(`line 159 set active board in handleSetActiveBoardFuncction`)
     setActiveBoardData(updatedActiveBoardData)};
   
   
@@ -180,8 +178,6 @@ function App() {
   };
 
   const handleEditCard = (editedCardData) => {
-    console.log(`line 188, handle edit card info-`, editedCardData)
-    console.log( `activeBoardData.cards`, activeBoardData.cards)
     const newCardsData = activeBoardData.cards.map((card) => {
       if (card.id === editedCardData.id) {
         return editedCardData; 
@@ -195,9 +191,29 @@ function App() {
       cards: newCardsData
     }
     updateCardDataApi(editedCardData);
-    // console.log('newData line 197', newData)
     handleSetActiveBoard(newActiveBoardData);
+    
   }
+
+  const handleEditBoard = (editedBoardData) => {
+    const newBoardsData = boardsData.map((board) => {
+      if (board.id === editedBoardData.id) {
+        return editedBoardData;
+      } else {
+        return board;
+      }
+    });
+    const newActiveBoardData= {
+      ...activeBoardData,
+      title:editedBoardData.title,
+      owner:editedBoardData.owner,
+    }
+    updateBoardTitleApi(editedBoardData)
+
+    // updateBoardsDataApi(editedBoardData);
+    setActiveBoardData(newActiveBoardData)
+    setBoardsData(newBoardsData);
+  };
 
   return (
     <div className='App'>
@@ -222,6 +238,7 @@ function App() {
             handleDeleteCard={handleDeleteCard}
             handleLikeCard={handleLikeCard}
             handleEditCard={handleEditCard}
+            handleEditBoard={handleEditBoard}
           />
         </div>
       }
