@@ -85,7 +85,12 @@ const updateCardDataApi = (cardData) => {
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1);
-  const [activeBoardData, setActiveBoardData] = useState({});
+  const [activeBoardData, setActiveBoardData] = useState({
+    id: 0,
+    owner: '',
+    title: '',
+    cards: [],
+  });
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen,openActiveBoard] = useState(false)
@@ -102,13 +107,17 @@ function App() {
   const getActiveBoard = () => {
     getActiveBoardApi(activeBoardId).then(board => {
       setActiveBoardData(board);
+      // console.log(`line 104 set active board in get active board function`)
     });
   };
   useEffect(()=> {
     getActiveBoard();
-  }, [activeBoardId, activeBoardData]);
+    console.log(`line 115 set active board in use effect`)
+
+  }, [activeBoardId]);
   
   const handleChangeActiveBoard = (id) =>  {
+    console.log(`line 113 set active board in handleChangeActiveBoard function`)
     setActiveBoardId(id);
     openActiveBoard(true)
   }
@@ -116,6 +125,7 @@ function App() {
   const addCard = (card) => {
     axios.post(`${apiEndpointLink}/boards/${activeBoardId}/cards`, card)
       .then(response => {
+        console.log(`line 121 set active board in get addCard function`)
         setActiveBoardData(prevState => ({
           ...prevState,
           cards: [...prevState.cards, convertCardFromApi(response.data)]
@@ -142,6 +152,7 @@ function App() {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
 
+    console.log(`line 148 set active board sort cards function`)
     setActiveBoardData(prevState => ({
       ...prevState,
       cards: sortedCards
@@ -151,6 +162,8 @@ function App() {
     const updatedActiveBoardData = {
       ... data
     }
+
+    console.log(`line 159 set active board in handleSetActiveBoardFuncction`)
     setActiveBoardData(updatedActiveBoardData)};
   
   
