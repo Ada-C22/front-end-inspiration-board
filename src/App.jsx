@@ -4,6 +4,7 @@ import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 import CardForm from './components/CardForm'
+import BoardForm from './components/BoardForm'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
@@ -89,6 +90,17 @@ const createBoardApi = (boardData) => {
     console.error('Error adding Board:', error);
   });
 };
+
+// TROUBLESHOOTING CODE:
+// const createBoardApi = (boardData) => {
+//   const postBoardEndpoint = `${apiEndpointLink}/boards`;
+
+//   return axios.post(postBoardEndpoint, boardData, {
+//     headers: {
+//       'Content-Type': 'application/json', // Use JSON, as the backend expects this
+//     },
+//   });
+// };
 
 const updateBoardTitleApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
@@ -230,6 +242,17 @@ function App() {
     })
   };
 
+// TROUBLESHOOTING CODE:
+  // const handleCreateBoard = async (newBoardData) => {
+  //   try {
+  //     const createdBoard = await createBoardApi(newBoardData);
+  //     setBoardsData((prevBoards) => [...prevBoards, createdBoard]);
+  //     console.log('Board created successfully:', createdBoard);
+  //   } catch (error) {
+  //     console.error('Failed to create board:', error);
+  //   }
+  // };
+
   const handleEditBoard = (editedBoardData) => {
     const newBoardsData = boardsData.map((board) => {
       if (board.id === editedBoardData.id) {
@@ -272,8 +295,8 @@ function App() {
         handleChangeActiveBoard = {handleChangeActiveBoard}
         activeBoardId={activeBoardId}
         createBoardState={createBoardState}
-        setCreateBoardState={setCreateBoardState}
-        handleCreateBoard={handleCreateBoard}/>
+        setCreateBoardState={setCreateBoardState} />
+        <BoardForm handleCreateBoard={handleCreateBoard}/>
       {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
