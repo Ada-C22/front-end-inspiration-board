@@ -5,10 +5,14 @@ import './ActiveBoard.css'
 import React, { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard}) => {
     const [boardEditing, setBoardEditing] = useState(false);
     const handleClickEditBoard = () => {
       setBoardEditing(true)
+    }
+
+    const handleClickDeleteBoard = () => {
+      handleDeleteBoard(ActiveBoard.id)
     }
 
     const getActiveBoardCards = (cards) => {
@@ -43,7 +47,7 @@ import EditBoardForm from './EditBoardForm';
         />
       }
       <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
-      <button className="delete-board-buttton">delete board</button>
+      <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
     </div>
   </section>
   }
@@ -66,6 +70,7 @@ import EditBoardForm from './EditBoardForm';
     handleLikeCard: PropTypes.func.isRequired,
     handleEditCard: PropTypes.func.isRequired,
     handleEditBoard: PropTypes.func.isRequired,
+    handleDeleteBoard: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

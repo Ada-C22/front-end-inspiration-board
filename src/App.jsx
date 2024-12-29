@@ -75,11 +75,17 @@ const updateCardDataApi = (cardData) => {
   .catch(error=> console.error(error));
 }
 const updateBoardTitleApi = (boardData) => {
-  const patchBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
-  return axios.put(patchBoardTitleEndpoint,({'title':boardData.title}))
+  const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
+  return axios.put(putBoardTitleEndpoint,({'title':boardData.title}))
   .catch(error=> console.error(error));
 }
 
+
+const deleteBoardApi = (id) => {
+  const deleteBoardEnpoint = apiEndpointLink + '/boards' + '/' +(id.toString());
+  return axios.delete(deleteBoardEnpoint)
+  .catch(error=>console.error(error));
+}
 
 ////////////////////////// APP //////////////////////////////
 
@@ -215,6 +221,18 @@ function App() {
     setBoardsData(newBoardsData);
   };
 
+  const handleDeleteBoard = (id) => {
+    deleteBoardApi(id)
+    const newBoardsData = boardsData.filter((board) => {
+      return board.id !== id; 
+    });
+    if (activeBoardId === id) {
+      openActiveBoard(false)
+    };
+    setBoardsData(newBoardsData);
+  };
+  
+
   return (
     <div className='App'>
       <h1>Vision Board</h1>
@@ -239,6 +257,7 @@ function App() {
             handleLikeCard={handleLikeCard}
             handleEditCard={handleEditCard}
             handleEditBoard={handleEditBoard}
+            handleDeleteBoard={handleDeleteBoard}
           />
         </div>
       }
