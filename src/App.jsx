@@ -128,11 +128,13 @@ function App() {
   };
 
   const handleSortChange = (event) => {
+    console.log('Sort option changed:', event.target.value);  // Debug log
     setSortOption(event.target.value);
     sortCards(event.target.value);
   };
 
   const sortCards = (sortOption) => {
+    console.log('Sorting cards by:', sortOption);  // Debug log
     const sortedCards = [...activeBoardData.cards];
     if (sortOption === 'id') {
       sortedCards.sort((a, b) => a.id - b.id);
@@ -141,6 +143,8 @@ function App() {
     } else if (sortOption === 'alphabetically') {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
+
+    console.log('Sorted cards:', sortedCards);  // Debug log
 
     setActiveBoardData(prevState => ({
       ...prevState,
