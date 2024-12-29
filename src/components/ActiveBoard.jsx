@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import './ActiveBoard.css'
 
   const ActiveBoard = (props) => {
+    console.log('line 7 active board props:',props)
     const getActiveBoardCards = (cards) => {
       return cards.map((card) => {
         return (
@@ -37,7 +38,7 @@ import './ActiveBoard.css'
           id:PropTypes.number.isRequired,
           message: PropTypes.string.isRequired,
           likesCount: PropTypes.number.isRequired,
-      }).isRequired,),
+      }).isRequired,).isRequired,
       id: PropTypes.number.isRequired,
       owner: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,

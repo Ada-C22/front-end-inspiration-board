@@ -6,6 +6,7 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
 
   const [formData, setFormData] = useState({
     id:id, 
+    boardId:boardId,
     likesCount: likesCount, 
     message: message,
     owner: owner,
@@ -19,15 +20,20 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
     });
   };
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     const newCardInfo = {
-      id:id, 
+      id:id,
+      boardId:boardId, 
       likesCount: likesCount, 
       message: formData.message,
       owner: formData.owner,
     }
-    handleEditCard(newCardInfo);
-    setEditing(false);
+    handleEditCard(newCardInfo)
+    
+    console.log(`line 32 newCardInfo`, newCardInfo);
+    // handleEditCard(newCardInfo);
+    // setEditing(false);
   };
 
   return (

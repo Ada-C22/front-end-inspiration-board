@@ -76,7 +76,6 @@ const updateCardDataApi = (cardData) => {
   .catch(error=> {
     console.log(error);
   });
-
 }
 
 
@@ -85,15 +84,11 @@ const updateCardDataApi = (cardData) => {
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState(1);
-  const [activeBoardData, setActiveBoardData] = useState({
-    id: 0,
-    owner: '',
-    title: '',
-    cards: [],
-  });
+  const [activeBoardData, setActiveBoardData] = useState({});
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen,openActiveBoard] = useState(false)
+  const [cards, setCards] = useState([])
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -107,17 +102,13 @@ function App() {
   const getActiveBoard = () => {
     getActiveBoardApi(activeBoardId).then(board => {
       setActiveBoardData(board);
-      // console.log(`line 104 set active board in get active board function`)
     });
   };
   useEffect(()=> {
     getActiveBoard();
-    console.log(`line 115 set active board in use effect`)
-
   }, [activeBoardId]);
   
   const handleChangeActiveBoard = (id) =>  {
-    console.log(`line 113 set active board in handleChangeActiveBoard function`)
     setActiveBoardId(id);
     openActiveBoard(true)
   }
@@ -125,7 +116,6 @@ function App() {
   const addCard = (card) => {
     axios.post(`${apiEndpointLink}/boards/${activeBoardId}/cards`, card)
       .then(response => {
-        console.log(`line 121 set active board in get addCard function`)
         setActiveBoardData(prevState => ({
           ...prevState,
           cards: [...prevState.cards, convertCardFromApi(response.data)]
@@ -190,19 +180,25 @@ function App() {
   };
 
   const handleEditCard = (editedCardData) => {
-    const newData = activeBoardData.cards.map((card) => {
+    console.log(`line 188, handle edit card info-`, editedCardData)
+    console.log( `activeBoardData.cards`, activeBoardData.cards)
+    const newCardsData = activeBoardData.cards.map((card) => {
       if (card.id === editedCardData.id) {
-        editedCardData
+        return editedCardData; 
+      } else { 
+        return card;
       }
-      updateCardDataApi(editedCardData)
-      return card; 
-
     });
-    activeBoardData.cards= newData; 
-    handleSetActiveBoard(activeBoardData)
-
+    
+    const newActiveBoardData = {
+      ...activeBoardData,
+      cards: newCardsData
+    }
+    updateCardDataApi(editedCardData);
+    // console.log('newData line 197', newData)
+    handleSetActiveBoard(newActiveBoardData);
   }
-  
+
   return (
     <div className='App'>
       <h1>Vision Board</h1>
@@ -210,7 +206,7 @@ function App() {
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}
         activeBoardId={activeBoardId}/>
-        {activeBoardOpen > 0 &&
+      {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
           <div> 
@@ -227,8 +223,9 @@ function App() {
             handleLikeCard={handleLikeCard}
             handleEditCard={handleEditCard}
           />
-          </div>}
-      </div>
+        </div>
+      }
+    </div>
   )
 }
 

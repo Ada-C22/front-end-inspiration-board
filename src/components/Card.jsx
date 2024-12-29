@@ -8,7 +8,7 @@ import EditCardForm from './EditCardForm';
 const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleLikeCard, handleEditCard}) => {
   const [editing, setEditing] = useState(false);
   
-  const onOpenEditing = () => {
+  const onClickEditButton = () => {
     setEditing(!editing)
   }
   const onClickDelete = () =>{
@@ -44,7 +44,7 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
     <div className="card-buttons">
       <button onClick={onClickLike}> like</button>
       <button onClick={onClickDelete}>Delete</button>
-      <button onClick={onOpenEditing}>Edit</button>
+      <button onClick={onClickEditButton}>Edit</button>
     </div>
 
   </li>
