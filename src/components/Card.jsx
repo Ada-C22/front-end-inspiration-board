@@ -9,7 +9,7 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
   const [cardEditing, setCardEditing] = useState(false);
   
   const onClickEditButton = () => {
-    setCardEditing(!editing)
+    setCardEditing(!cardEditing)
   }
   const onClickDelete = () =>{
     handleDeleteCard(id)

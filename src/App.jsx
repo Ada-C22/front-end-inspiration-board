@@ -74,6 +74,22 @@ const updateCardDataApi = (cardData) => {
   return axios.patch(patchCardEndpoint,jsonCard)
   .catch(error=> console.error(error));
 }
+
+const createBoardApi = (boardData) => {
+  const postBoardEndpoint = apiEndpointLink + '/boards'; 
+  return axios.post(postBoardEndpoint,boardData)
+  .then(response => {
+    const createdBoardData = {
+    id : response.data.id
+    }
+    console.log(createdBoardData)
+    return createdBoardData}
+  )
+  .catch(error => {
+    console.error('Error adding Board:', error);
+  });
+};
+
 const updateBoardTitleApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
   return axios.put(putBoardTitleEndpoint,({'title':boardData.title}))
@@ -95,6 +111,7 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen,openActiveBoard] = useState(false)
+  const [createBoardState,setCreateBoardState] = useState(false)
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -201,6 +218,14 @@ function App() {
     
   }
 
+  const handleCreateBoard= (newBoardData) => {
+    createBoardApi(newBoardData)
+    .then( response=> {
+      console.log('response was',response)
+      // setActiveBoardId(response.createdBoardData.id)
+    })
+  };
+
   const handleEditBoard = (editedBoardData) => {
     const newBoardsData = boardsData.map((board) => {
       if (board.id === editedBoardData.id) {
@@ -230,6 +255,8 @@ function App() {
       openActiveBoard(false)
     };
     setBoardsData(newBoardsData);
+
+
   };
   
 
@@ -239,7 +266,10 @@ function App() {
       <BoardList 
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}
-        activeBoardId={activeBoardId}/>
+        activeBoardId={activeBoardId}
+        createBoardState={createBoardState}
+        setCreateBoardState={setCreateBoardState}
+        handleCreateBoard={handleCreateBoard}/>
       {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
