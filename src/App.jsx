@@ -3,7 +3,6 @@ import BoardList from'./components/BoardList'
 import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
-import boardOneCards from './data/boardOneCards';
 import CardForm from './components/CardForm'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
@@ -70,16 +69,39 @@ const convertCardForApi = (jsxCard) => {
 };
 
 const updateCardDataApi = (cardData) => {
-  const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString())
+  const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString());
   const jsonCard = convertCardForApi(cardData)
   return axios.patch(patchCardEndpoint,jsonCard)
-  .catch(error=> {
-    console.log(error);
-  });
+  .catch(error=> console.error(error));
+}
 
+const createBoardApi = (boardData) => {
+  const postBoardEndpoint = apiEndpointLink + '/boards'; 
+  return axios.post(postBoardEndpoint,boardData)
+  .then(response => {
+    const createdBoardData = {
+    id : response.data.id
+    }
+    console.log(createdBoardData)
+    return createdBoardData}
+  )
+  .catch(error => {
+    console.error('Error adding Board:', error);
+  });
+};
+
+const updateBoardTitleApi = (boardData) => {
+  const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
+  return axios.put(putBoardTitleEndpoint,({'title':boardData.title}))
+  .catch(error=> console.error(error));
 }
 
 
+const deleteBoardApi = (id) => {
+  const deleteBoardEnpoint = apiEndpointLink + '/boards' + '/' +(id.toString());
+  return axios.delete(deleteBoardEnpoint)
+  .catch(error=>console.error(error));
+}
 
 ////////////////////////// APP //////////////////////////////
 
@@ -89,6 +111,7 @@ function App() {
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen,openActiveBoard] = useState(false)
+  const [createBoardState,setCreateBoardState] = useState(false)
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -106,7 +129,7 @@ function App() {
   };
   useEffect(()=> {
     getActiveBoard();
-  }, [activeBoardId, activeBoardData]);
+  }, [activeBoardId]);
   
   const handleChangeActiveBoard = (id) =>  {
     setActiveBoardId(id);
@@ -155,6 +178,7 @@ function App() {
     const updatedActiveBoardData = {
       ... data
     }
+
     setActiveBoardData(updatedActiveBoardData)};
   
   
@@ -181,27 +205,76 @@ function App() {
   };
 
   const handleEditCard = (editedCardData) => {
-    const newData = activeBoardData.cards.map((card) => {
+    const newCardsData = activeBoardData.cards.map((card) => {
       if (card.id === editedCardData.id) {
-        editedCardData
+        return editedCardData; 
+      } else { 
+        return card;
       }
-      updateCardDataApi(editedCardData)
-      return card; 
-
     });
-    activeBoardData.cards= newData; 
-    handleSetActiveBoard(activeBoardData)
-
+    
+    const newActiveBoardData = {
+      ...activeBoardData,
+      cards: newCardsData
+    }
+    updateCardDataApi(editedCardData);
+    handleSetActiveBoard(newActiveBoardData);
+    
   }
+
+  const handleCreateBoard= (newBoardData) => {
+    createBoardApi(newBoardData)
+    .then( response=> {
+      console.log('response was',response)
+      // setActiveBoardId(response.createdBoardData.id)
+    })
+  };
+
+  const handleEditBoard = (editedBoardData) => {
+    const newBoardsData = boardsData.map((board) => {
+      if (board.id === editedBoardData.id) {
+        return editedBoardData;
+      } else {
+        return board;
+      }
+    });
+    const newActiveBoardData= {
+      ...activeBoardData,
+      title:editedBoardData.title,
+      owner:editedBoardData.owner,
+    }
+    updateBoardTitleApi(editedBoardData)
+
+    // updateBoardsDataApi(editedBoardData);
+    setActiveBoardData(newActiveBoardData)
+    setBoardsData(newBoardsData);
+  };
+
+  const handleDeleteBoard = (id) => {
+    deleteBoardApi(id)
+    const newBoardsData = boardsData.filter((board) => {
+      return board.id !== id; 
+    });
+    if (activeBoardId === id) {
+      openActiveBoard(false)
+    };
+    setBoardsData(newBoardsData);
+
+
+  };
   
+
   return (
     <div className='App'>
       <h1>Vision Board</h1>
       <BoardList 
         Boards={boardsData} 
         handleChangeActiveBoard = {handleChangeActiveBoard}
-        activeBoardId={activeBoardId}/>
-        {activeBoardOpen > 0 &&
+        activeBoardId={activeBoardId}
+        createBoardState={createBoardState}
+        setCreateBoardState={setCreateBoardState}
+        handleCreateBoard={handleCreateBoard}/>
+      {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
           <div> 
@@ -217,9 +290,12 @@ function App() {
             handleDeleteCard={handleDeleteCard}
             handleLikeCard={handleLikeCard}
             handleEditCard={handleEditCard}
+            handleEditBoard={handleEditBoard}
+            handleDeleteBoard={handleDeleteBoard}
           />
-          </div>}
-      </div>
+        </div>
+      }
+    </div>
   )
 }
 

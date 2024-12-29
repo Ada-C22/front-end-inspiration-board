@@ -6,10 +6,10 @@ import EditCardForm from './EditCardForm';
 
 
 const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleLikeCard, handleEditCard}) => {
-  const [editing, setEditing] = useState(false);
+  const [cardEditing, setCardEditing] = useState(false);
   
-  const onOpenEditing = () => {
-    setEditing(!editing)
+  const onClickEditButton = () => {
+    setCardEditing(!cardEditing)
   }
   const onClickDelete = () =>{
     handleDeleteCard(id)
@@ -30,21 +30,21 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
     <p className="card-like-counts">{likesCount} likes</p>
     </div>
     <div>
-    {editing > 0 && 
+    {cardEditing > 0 && 
       <EditCardForm 
       id={id}
       boardId={boardId}
       likesCount={likesCount}
       message={message}
       owner={owner}
-      setEditing={setEditing}
+      setCardEditing={setCardEditing}
       handleEditCard={handleEditCard}
       />}
     </div>
     <div className="card-buttons">
       <button onClick={onClickLike}> like</button>
       <button onClick={onClickDelete}>Delete</button>
-      <button onClick={onOpenEditing}>Edit</button>
+      <button onClick={onClickEditButton}>Edit</button>
     </div>
 
   </li>
