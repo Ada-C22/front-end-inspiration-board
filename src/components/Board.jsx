@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import './css/Board.css'
 const Board = ({id,owner,title, handleChangeActiveBoard, activeBoardId}) => {
   
 
@@ -16,7 +16,7 @@ const Board = ({id,owner,title, handleChangeActiveBoard, activeBoardId}) => {
   };
 
   return (
-    <button className={boardClass} onClick={onClickActiveBoard}> {title} | {owner}</button>
+    <button className={boardClass} onClick={onClickActiveBoard}><span className='board-details-container'> <p className='board-title'>{title}</p> <p className='board-owner'>{owner}</p></span></button>
   )
 };
 

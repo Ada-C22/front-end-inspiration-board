@@ -1,8 +1,8 @@
 import Card from './Card'
 import PropTypes from 'prop-types'
 // import './Card.css'
-import './ActiveBoard.css'
-import React, { useState } from 'react';
+// import './ActiveBoard.css'
+import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
 
   const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard}) => {

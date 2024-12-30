@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import './css/BoardForm.css'
 
-const BoardForm = ({handleCreateBoard}) => {
+const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
   const [formData, setFormData] = useState({
     title: '',
     owner: ''
@@ -13,6 +14,7 @@ const BoardForm = ({handleCreateBoard}) => {
       ...formData,
       [name]: value
     });
+    
   };
 
   const handleSubmit = (event) => {
@@ -22,14 +24,16 @@ const BoardForm = ({handleCreateBoard}) => {
       title:'',
       owner:'',
     });
+    setCreateBoardState(false)
   };
 
   return (
-    <section className='board-form'>
-      <h2 className='board-form-title'> Create A New Board</h2>
+    <section className='board-form-container'>
+      <span>
       <form onSubmit={handleSubmit}>
+        <div className = 'form-container'>
         <div>
-          <label htmlFor='title'>Title:</label>
+          <label htmlFor='title'>Board Title:</label>
           <input
             type='text'
             id='title'
@@ -40,7 +44,7 @@ const BoardForm = ({handleCreateBoard}) => {
           />
         </div>
         <div>
-          <label htmlFor='owner'>Name:</label>
+          <label htmlFor='owner'>Board Owner:</label>
           <input 
             type='text'
             id='owner'
@@ -50,8 +54,10 @@ const BoardForm = ({handleCreateBoard}) => {
             required
           />
         </div>
+        </div>
         <button type='submit'>Submit</button>
       </form>
+      </span>
     </section>
   )
 };
@@ -59,4 +65,5 @@ export default BoardForm;
 
 BoardForm.propTypes= {
   handleCreateBoard: PropTypes.func.isRequired,
+  setCreateBoardState: PropTypes.func.isRequired,
 }

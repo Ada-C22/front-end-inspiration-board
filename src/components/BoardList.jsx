@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
-import './BoardList.css'
+import './css/BoardList.css'
 import Board from './Board'
 import BoardForm from './BoardForm'
+import { useEffect } from 'react'
 
 
 const BoardList = ({Boards, handleChangeActiveBoard, activeBoardId, setCreateBoardState,createBoardState, handleCreateBoard}) => {
@@ -14,7 +15,8 @@ const BoardList = ({Boards, handleChangeActiveBoard, activeBoardId, setCreateBoa
     return boards.map((board) => {
       return (
         <Board 
-          key={board.id} 
+          key={board.id}
+          className='board' 
           id={board.id}
           title={board.title} 
           owner={board.owner} 
@@ -25,19 +27,28 @@ const BoardList = ({Boards, handleChangeActiveBoard, activeBoardId, setCreateBoa
     });
   };
 
+  useEffect (() => {
+  }, [createBoardState]);
+
   return (
-  <section className ="BoardListBox">
-    <h1 className="visionBoardListTitle">Vision Boards</h1>
+  <section className ="board-list-component">
+    <h1 className="board-list-title">Vision Boards</h1>
   <div>
-    <ul className="BoardList">
+    <ul className="board-list">
+    <span className='board-list-index'><p className='tile-column'>Board Title</p><p className='owner-column'>Board Owner</p></span>
     {getVisionBoardList(Boards)}
-    </ul>
-    <button className="CreateBoardButton" onClick={handleClickCreateBoard}>Create New Board</button>
-  </div>;
-  {createBoardState > 0 &&
-  <BoardForm handleCreateBoard={handleCreateBoard}/>}
+      {createBoardState === false && 
+      <button className="CreateBoardButton" onClick={handleClickCreateBoard}>Create New Board</button>
+      }
+      {createBoardState === true &&
+      <BoardForm handleCreateBoard={handleCreateBoard} setCreateBoardState={setCreateBoardState}/>}
+
+  </ul>
+  </div>
   </section>)
 };
+
+    
 
 
 BoardList.propTypes= {

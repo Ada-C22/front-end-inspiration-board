@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
-import './CardForm.css'
+// import './CardForm.css'
 
 const CardForm = ({ addCard }) => {
     const [formData, setFormData] = useState({

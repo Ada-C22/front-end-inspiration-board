@@ -1,18 +1,17 @@
-.BoardListBox{
+.board-list-component{
   display: flex;
   flex-direction: column;
-  background-color: burlywood;
-
 }
 
-.visionBoardListTitle{
+.board-list-title{
   display:flex;
   flex-direction: column;
   border-spacing:15px;
 }
 
 
-.BoardList {
+
+.board-list {
   display: flex; 
   flex-direction: column;
 }
@@ -20,3 +19,9 @@
 li {
   list-style: none;
 }
+
+.board-list-index {
+  display: grid; 
+  grid-template-columns: 50% 50%;
+}
+

@@ -260,35 +260,43 @@ function App() {
   
   return (
     <div className='App'>
-      <h1>Vision Board</h1>
-      <BoardList 
-        Boards={boardsData} 
-        handleChangeActiveBoard = {handleChangeActiveBoard}
-        activeBoardId={activeBoardId}
-        createBoardState={createBoardState}
-        setCreateBoardState={setCreateBoardState}
-        handleCreateBoard={handleCreateBoard} />
-        {/* <BoardForm handleCreateBoard={handleCreateBoard}/> // this is the form that is not rendering */}
-      {activeBoardOpen > 0 &&
-        <div className='active-board-container'>
-          <CardForm addCard={addCard}/>  
-          <div> 
-            <label htmlFor="sort">Sort Cards by:</label>
-            <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
-              <option value='id'>ID</option>
-              <option value='likes'>Likes</option>
-              <option value='alphabetically'>Alphabetically</option>
-            </select>
+      <section className='top-section'>
+        <div className='board-list-container'>
+          <BoardList 
+            Boards={boardsData} 
+            handleChangeActiveBoard = {handleChangeActiveBoard}
+            activeBoardId={activeBoardId}
+            createBoardState={createBoardState}
+            setCreateBoardState={setCreateBoardState}
+            handleCreateBoard={handleCreateBoard}/>
           </div>
-          <ActiveBoard 
-            ActiveBoard={activeBoardData}
-            handleDeleteCard={handleDeleteCard}
-            handleLikeCard={handleLikeCard}
-            handleEditCard={handleEditCard}
-            handleEditBoard={handleEditBoard}
-            handleDeleteBoard={handleDeleteBoard}
-          />
-        </div>
+
+        {activeBoardOpen > 0 &&
+          <div className='add-card-container'>
+            <CardForm addCard={addCard}/>  
+            <div> 
+              <label htmlFor="sort">Sort Cards by:</label>
+              <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
+                <option value='id'>ID</option>
+                <option value='likes'>Likes</option>
+                <option value='alphabetically'>Alphabetically</option>
+              </select>
+            </div>
+          </div>}
+      </section>
+      {activeBoardOpen > 0 && 
+    <section className='bottom-section'>
+      <div className='active-board-container'>
+            <ActiveBoard 
+              ActiveBoard={activeBoardData}
+              handleDeleteCard={handleDeleteCard}
+              handleLikeCard={handleLikeCard}
+              handleEditCard={handleEditCard}
+              handleEditBoard={handleEditBoard}
+              handleDeleteBoard={handleDeleteBoard}
+            />
+          </div>
+      </section>
       }
     </div>
   )

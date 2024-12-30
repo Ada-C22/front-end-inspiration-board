@@ -1,0 +1,10 @@
+button {
+  margin-top: 2px;
+}
+
+.board-details-container {
+  display: grid; 
+  grid-template-columns: 50% 50%;
+  justify-items: left;
+}
+

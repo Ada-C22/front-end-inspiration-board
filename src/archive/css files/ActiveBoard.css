@@ -1,4 +1,4 @@
-.ab-card-container{
+/* .ab-card-container{
   display: grid;
   grid-template-columns: auto auto auto;
   padding: 10px;
@@ -7,7 +7,7 @@
 /* .ab-card-conttainer > .individual-card {
   flex: 1 1;
 } */
-
+/* 
 h2{
   font-size:15px;
 }
@@ -15,4 +15,4 @@ h2{
 .active-board-container{
   background-color: rgb(103, 76, 109);
 }
-
+ */ 
