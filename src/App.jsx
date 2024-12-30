@@ -80,29 +80,7 @@ const createBoardApi = (boardData) => {
   const postBoardEndPoint = apiEndpointLink + '/boards/';
   return axios.post(postBoardEndPoint, boardData);
 };
-//   const postBoardEndpoint = apiEndpointLink + '/boards/'; 
-//   return axios.post(postBoardEndpoint, boardData)
-//   .then(response => {
-//     const createdBoardId = response.data.id
-//     return createdBoardId
-//     })
-//   .catch(error => {
-//     console.error('Error adding Board:', error);
-//   })
-//   }
-//   ;
-  
 
-// TROUBLESHOOTING CODE:
-// const createBoardApi = (boardData) => {
-//   const postBoardEndpoint = `${apiEndpointLink}/boards/`;
-
-//   return axios.post(postBoardEndpoint, boardData, {
-//     headers: {
-//       'Content-Type': 'application/json', // Use JSON, as the backend expects this
-//     },
-//   });
-// };
 
 const updateBoardTitleApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
@@ -237,13 +215,11 @@ function App() {
     
   }
 
-// TROUBLESHOOTING CODE:
   const handleCreateBoard = async (newBoardData) => {
     try {
       const createdBoard = await createBoardApi(newBoardData);
-      console.log('create board api successful ', createdBoard)
-      console.log('createBoard id ', createdBoard.data.board.id)
       handleChangeActiveBoard(createdBoard.data.board.id)
+      getBoardsList()
     } catch (error) {
       console.error('Failed to create board:', error);
     }
