@@ -18,7 +18,6 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
 
   const onClickLike = ()  => {
     handleLikeCard(id)
-    console.log(`line 20 in card`)
   }
 
   return (

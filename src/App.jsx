@@ -77,14 +77,16 @@ const updateCardDataApi = (cardData) => {
 
 const createBoardApi = (boardData) => {
   const postBoardEndpoint = apiEndpointLink + '/boards'; 
-  return axios.post(postBoardEndpoint,boardData)
-  .then(response => {
-    const createdBoardData = {
-    id : response.data.id
-    }
-    console.log(createdBoardData)
-    return createdBoardData}
-  )
+  console.log('endpoint link: ', postBoardEndpoint)
+  console.log(postBoardEndpoint, boardData)
+  return axios.post(postBoardEndpoint, boardData)
+  // .then(response => {
+  //   const createdBoardData = {
+  //   id : response.data.id
+  //   }
+  //   console.log(createdBoardData)
+  //   return createdBoardData}
+  // )
   .catch(error => {
     console.error('Error adding Board:', error);
   });
@@ -137,6 +139,7 @@ function App() {
   }
 
   const addCard = (card) => {
+    console.log('140 liine', card)
     axios.post(`${apiEndpointLink}/boards/${activeBoardId}/cards`, card)
       .then(response => {
         setActiveBoardData(prevState => ({
@@ -219,11 +222,8 @@ function App() {
   }
 
   const handleCreateBoard= (newBoardData) => {
+    console.log('line 222 new boafd data, ', newBoardData)
     createBoardApi(newBoardData)
-    .then( response=> {
-      console.log('response was',response)
-      // setActiveBoardId(response.createdBoardData.id)
-    })
   };
 
   const handleEditBoard = (editedBoardData) => {

@@ -12,7 +12,6 @@ const Board = ({id,owner,title, handleChangeActiveBoard, activeBoardId}) => {
   
   const boardClass = setClass()
   const onClickActiveBoard = () => {
-    console.log(`thiis board is `, id);
     handleChangeActiveBoard(id)
   };
 
