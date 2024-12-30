@@ -4,6 +4,7 @@ import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 import CardForm from './components/CardForm'
+// import BoardForm from './components/BoardForm' // this is the form that is not rendering
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
@@ -92,6 +93,17 @@ const createBoardApi = (boardData) => {
   });
 };
 
+// TROUBLESHOOTING CODE:
+// const createBoardApi = (boardData) => {
+//   const postBoardEndpoint = `${apiEndpointLink}/boards`;
+
+//   return axios.post(postBoardEndpoint, boardData, {
+//     headers: {
+//       'Content-Type': 'application/json', // Use JSON, as the backend expects this
+//     },
+//   });
+// };
+
 const updateBoardTitleApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
   return axios.put(putBoardTitleEndpoint,({'title':boardData.title}))
@@ -154,11 +166,13 @@ function App() {
   };
 
   const handleSortChange = (event) => {
+    console.log('Sort option changed:', event.target.value);  // Debug log
     setSortOption(event.target.value);
     sortCards(event.target.value);
   };
 
   const sortCards = (sortOption) => {
+    console.log('Sorting cards by:', sortOption);  // Debug log
     const sortedCards = [...activeBoardData.cards];
     if (sortOption === 'id') {
       sortedCards.sort((a, b) => a.id - b.id);
@@ -167,6 +181,8 @@ function App() {
     } else if (sortOption === 'alphabetically') {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
+
+    console.log('Sorted cards:', sortedCards);  // Debug log
 
     setActiveBoardData(prevState => ({
       ...prevState,
@@ -226,6 +242,17 @@ function App() {
     createBoardApi(newBoardData)
   };
 
+// TROUBLESHOOTING CODE:
+  // const handleCreateBoard = async (newBoardData) => {
+  //   try {
+  //     const createdBoard = await createBoardApi(newBoardData);
+  //     setBoardsData((prevBoards) => [...prevBoards, createdBoard]);
+  //     console.log('Board created successfully:', createdBoard);
+  //   } catch (error) {
+  //     console.error('Failed to create board:', error);
+  //   }
+  // };
+
   const handleEditBoard = (editedBoardData) => {
     const newBoardsData = boardsData.map((board) => {
       if (board.id === editedBoardData.id) {
@@ -259,7 +286,6 @@ function App() {
 
   };
   
-
   return (
     <div className='App'>
       <h1>Vision Board</h1>
@@ -269,7 +295,8 @@ function App() {
         activeBoardId={activeBoardId}
         createBoardState={createBoardState}
         setCreateBoardState={setCreateBoardState}
-        handleCreateBoard={handleCreateBoard}/>
+        handleCreateBoard={handleCreateBoard} />
+        {/* <BoardForm handleCreateBoard={handleCreateBoard}/> // this is the form that is not rendering */}
       {activeBoardOpen > 0 &&
         <div className='active-board-container'>
           <CardForm addCard={addCard}/>  
@@ -294,6 +321,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App
