@@ -195,6 +195,7 @@ function App() {
     });
     activeBoardData.cards = newData; 
     handleSetActiveBoard(activeBoardData)
+    sortCards(sortOption)
   };
 
   const handleEditCard = (editedCardData) => {
@@ -212,7 +213,6 @@ function App() {
     }
     updateCardDataApi(editedCardData);
     handleSetActiveBoard(newActiveBoardData);
-    
   }
 
   const handleCreateBoard = async (newBoardData) => {
