@@ -77,25 +77,25 @@ const updateCardDataApi = (cardData) => {
 }
 
 const createBoardApi = (boardData) => {
-  const postBoardEndpoint = apiEndpointLink + '/boards'; 
-  console.log('endpoint link: ', postBoardEndpoint)
-  console.log(postBoardEndpoint, boardData)
-  return axios.post(postBoardEndpoint, boardData)
-  // .then(response => {
-  //   const createdBoardData = {
-  //   id : response.data.id
-  //   }
-  //   console.log(createdBoardData)
-  //   return createdBoardData}
-  // )
-  .catch(error => {
-    console.error('Error adding Board:', error);
-  });
+  const postBoardEndPoint = apiEndpointLink + '/boards/';
+  return axios.post(postBoardEndPoint, boardData);
 };
+//   const postBoardEndpoint = apiEndpointLink + '/boards/'; 
+//   return axios.post(postBoardEndpoint, boardData)
+//   .then(response => {
+//     const createdBoardId = response.data.id
+//     return createdBoardId
+//     })
+//   .catch(error => {
+//     console.error('Error adding Board:', error);
+//   })
+//   }
+//   ;
+  
 
 // TROUBLESHOOTING CODE:
 // const createBoardApi = (boardData) => {
-//   const postBoardEndpoint = `${apiEndpointLink}/boards`;
+//   const postBoardEndpoint = `${apiEndpointLink}/boards/`;
 
 //   return axios.post(postBoardEndpoint, boardData, {
 //     headers: {
@@ -237,21 +237,42 @@ function App() {
     
   }
 
-  const handleCreateBoard= (newBoardData) => {
-    console.log('line 222 new boafd data, ', newBoardData)
-    createBoardApi(newBoardData)
-  };
+  // const handleCreateBoard= (newBoardData) => {
+  //   const getCreatedBoardId = async () => {
+  //     try {
+  //       let createdBoardId = await createBoardApi()
+  //       return createdBoardId;
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
+  //   console.log(getCreatedBoardId)}
+  //   // async function createBoardApi(newBoardData) {
+  //   //   try {
+  //   //     const response = await fetch()
+  //   //   }
+  //   // }
+
+  //   console.log('line 222 new boafd data, ', newBoardData)
+  //   const createdBoardId = createBoardApi(newBoardData)
+  //   console.log(createdBoardId)
+  //   setActiveBoardId(createdBoardId)
+
+  // };
 
 // TROUBLESHOOTING CODE:
-  // const handleCreateBoard = async (newBoardData) => {
-  //   try {
-  //     const createdBoard = await createBoardApi(newBoardData);
-  //     setBoardsData((prevBoards) => [...prevBoards, createdBoard]);
-  //     console.log('Board created successfully:', createdBoard);
-  //   } catch (error) {
-  //     console.error('Failed to create board:', error);
-  //   }
-  // };
+  const handleCreateBoard = async (newBoardData) => {
+    try {
+      const createdBoard = await createBoardApi(newBoardData);
+      console.log('create board api successful ', createdBoard)
+      console.log('createBoard id ', createdBoard.data.board.id)
+      setActiveBoardId(createdBoard.data.board.id)
+      setBoardsData((prevBoards) => [...prevBoards, activeBoardData]);
+      // console.log('Board created successfully:', createdBoard);
+    } catch (error) {
+      console.error('Failed to create board:', error);
+    }
+  };
 
   const handleEditBoard = (editedBoardData) => {
     const newBoardsData = boardsData.map((board) => {
