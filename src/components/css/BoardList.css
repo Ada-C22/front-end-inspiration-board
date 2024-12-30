@@ -6,7 +6,6 @@
 .board-list-title{
   display:flex;
   flex-direction: column;
-  border-spacing:15px;
 }
 
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import BoardList from'./components/BoardList'
 import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
+// import SortCardsInput from './components/SortcardsInput'
 import './App.css'
 import CardForm from './components/CardForm'
 // import BoardForm from './components/BoardForm' // this is the form that is not rendering
@@ -270,31 +271,31 @@ function App() {
             setCreateBoardState={setCreateBoardState}
             handleCreateBoard={handleCreateBoard}/>
           </div>
-
-        {activeBoardOpen > 0 &&
-          <div className='add-card-container'>
-            <CardForm addCard={addCard}/>  
-            <div> 
-              <label htmlFor="sort">Sort Cards by:</label>
-              <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
-                <option value='id'>ID</option>
-                <option value='likes'>Likes</option>
-                <option value='alphabetically'>Alphabetically</option>
-              </select>
-            </div>
-          </div>}
       </section>
-      {activeBoardOpen > 0 && 
-    <section className='bottom-section'>
+
+    {activeBoardOpen === true &&
+      <section className='bottom-section'>
+
       <div className='active-board-container'>
-            <ActiveBoard 
-              ActiveBoard={activeBoardData}
-              handleDeleteCard={handleDeleteCard}
-              handleLikeCard={handleLikeCard}
-              handleEditCard={handleEditCard}
-              handleEditBoard={handleEditBoard}
-              handleDeleteBoard={handleDeleteBoard}
-            />
+        <label htmlFor="sort">Sort Cards by:</label>
+          <select id='sortOptions' value={sortOption} onChange={setSortOption}>
+            <option value='id'>ID</option>
+            <option value='likes'>Likes</option>
+            <option value='alphabetically'>Alphabetically</option>
+          </select>
+      
+        {/* <SortCardsInput
+          handleSortChange={setSortOption} 
+          sortCards={sortCards}
+          sortOption={sortOption}/> */}
+        <ActiveBoard 
+          ActiveBoard={activeBoardData}
+          handleDeleteCard={handleDeleteCard}
+          handleLikeCard={handleLikeCard}
+          handleEditCard={handleEditCard}
+          handleEditBoard={handleEditBoard}
+          handleDeleteBoard={handleDeleteBoard}
+          addCard = {addCard} />
           </div>
       </section>
       }

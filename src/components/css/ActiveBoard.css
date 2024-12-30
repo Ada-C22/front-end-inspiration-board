@@ -1,0 +1,13 @@
+.ab-card-container{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+
+h2{
+  font-size:15px;
+}
+
+.active-board-container{
+  background-color: rgb(103, 76, 109);
+}

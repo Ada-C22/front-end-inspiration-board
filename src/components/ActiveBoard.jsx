@@ -1,12 +1,18 @@
 import Card from './Card'
+import CardForm from './CardForm'
 import PropTypes from 'prop-types'
-// import './Card.css'
-// import './ActiveBoard.css'
+import './css/ActiveBoard.css'
 import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard}) => {
     const [boardEditing, setBoardEditing] = useState(false);
+    const [addCardState, setAddCardState] = useState(false);
+    
+    const handleClickAddCard = () => {
+      setAddCardState(true)
+    }
+    
     const handleClickEditBoard = () => {
       setBoardEditing(true)
     }
@@ -32,26 +38,42 @@ import EditBoardForm from './EditBoardForm';
         );
       });
   };
-  return <section className ="active-board-container">
-    <h1 className ="active-board-name">{ActiveBoard.title}</h1>
-    <h3 className ="active-board-author"> {ActiveBoard.owner}</h3> 
-    <ul className="ab-card-container">{getActiveBoardCards(ActiveBoard.cards)}</ul>
-    <div className="edit-board-container">
-      {boardEditing > 0 &&
-        <EditBoardForm
-          id={ActiveBoard.id}
-          title={ActiveBoard.title}
-          owner={ActiveBoard.owner}
-          setBoardEditing={setBoardEditing}
-          handleEditBoard={handleEditBoard}
-        />
-      }
-      <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
-      <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
+  return (<section className ="active-board-container">
+    <div className="title-section">
+      <h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2>
+      <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4> 
     </div>
-  </section>
-  }
+    <div className="card-and-button-section">
+      <ul className="ab-card-container">
+        {getActiveBoardCards(ActiveBoard.cards)}
+        {addCardState === true &&
+        <CardForm 
+          setAddCardState={setAddCardState}
+          addCard={addCard}
+          />
+        }
 
+      </ul>
+      <div className="edit-board-container">
+        {boardEditing > 0 &&
+          <EditBoardForm
+            id={ActiveBoard.id}
+            title={ActiveBoard.title}
+            owner={ActiveBoard.owner}
+            setBoardEditing={setBoardEditing}
+            handleEditBoard={handleEditBoard}
+          />
+        }
+        <button className="add-card-button" onClick={handleClickAddCard}>add card</button>
+        <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
+        <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
+
+      </div>
+    </div>
+  
+  </section>
+  )
+  }
 
   ActiveBoard.propTypes= {
     ActiveBoard: PropTypes.shape({
@@ -71,6 +93,7 @@ import EditBoardForm from './EditBoardForm';
     handleEditCard: PropTypes.func.isRequired,
     handleEditBoard: PropTypes.func.isRequired,
     handleDeleteBoard: PropTypes.func.isRequired,
+    addCard: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

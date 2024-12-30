@@ -1,24 +1,5 @@
-
-.App {
-  width: 95%;
-}
-
 .top-section{
   display: grid;
-  grid-template-columns: 60% 90%;
   grid-template-rows: auto auto;
   background-color: bisque;
-}
-
-.top-section > .board-lis-container{
-  grid-column: 0
-}
-
-.topSection > .add-card-container{
-  grid-column: 1
-}
-
-.bottom-section{
-  background-color: pink;
-
 }

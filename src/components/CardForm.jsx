@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
-// import './CardForm.css'
+import './css/CardForm.css'
 
-const CardForm = ({ addCard }) => {
+
+const CardForm = ({ addCard, setAddCardState }) => {
     const [formData, setFormData] = useState({
         message: '',
         owner: ''
@@ -23,10 +24,11 @@ const CardForm = ({ addCard }) => {
             message: '',
             owner: ''
         });
+        setAddCardState(false)
     };
 
     return (
-        <section className='CardForm'>
+        <section className='card-form'>
         <h2 className='CardFormTitle'>Add a Card</h2>
         <form onSubmit={handleSubmit}>
             <div>
@@ -58,7 +60,8 @@ const CardForm = ({ addCard }) => {
 };
 
 CardForm.propTypes = {
-    addCard: PropTypes.func.isRequired
+    addCard: PropTypes.func.isRequired,
+    setAddCardState: PropTypes.func.isRequired,
 };
 
 export default CardForm;

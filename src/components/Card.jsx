@@ -1,4 +1,4 @@
-// import './Card.css'
+import './css/Card.css'
 import PropTypes from 'prop-types'
 import { useState } from 'react';
 import EditCardForm from './EditCardForm';
@@ -21,10 +21,9 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
 
   return (
   <li className="card-container">
-    <div className="cardContent">
-    <h4>{owner}</h4>
+    <div className="card-content">
+    <h5 className="card-owner">Author | {owner}</h5>
     <h2 className="card-message">{message}</h2>
-    {/* <h4>Author:{card.author}</h4> */}
     <p className="card-like-counts">{likesCount} likes</p>
     </div>
     <div>

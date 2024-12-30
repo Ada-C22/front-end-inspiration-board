@@ -1,29 +1,25 @@
 .card-buttons > {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 33% 33%;
 }
 
 .card-container{
   display: grid; 
   grid-template-rows: auto auto;
   background-color:lightsteelblue;
-  width: 300px;
-  height: 300px;
-  padding: 20px; 
+  width: auto;
+  height: 200px;
   text-align: center;
-  border: 1px solid gray;
-  justify-items: space-evenly;
-  gap: column-gap 10px;
   margin-top: 2px;
-  margin-left: 2px;
   margin-right: 2px;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  border: 1px solid gray;
 }
-
-.card-content{
-  padding-top:15px;
-}
-
 .card-buttons{
   align-content: end;
 }
 
+.card-owner {
+  font-style: italic;
+}
