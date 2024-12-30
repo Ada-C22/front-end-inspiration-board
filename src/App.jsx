@@ -237,38 +237,13 @@ function App() {
     
   }
 
-  // const handleCreateBoard= (newBoardData) => {
-  //   const getCreatedBoardId = async () => {
-  //     try {
-  //       let createdBoardId = await createBoardApi()
-  //       return createdBoardId;
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }
-  //   console.log(getCreatedBoardId)}
-  //   // async function createBoardApi(newBoardData) {
-  //   //   try {
-  //   //     const response = await fetch()
-  //   //   }
-  //   // }
-
-  //   console.log('line 222 new boafd data, ', newBoardData)
-  //   const createdBoardId = createBoardApi(newBoardData)
-  //   console.log(createdBoardId)
-  //   setActiveBoardId(createdBoardId)
-
-  // };
-
 // TROUBLESHOOTING CODE:
   const handleCreateBoard = async (newBoardData) => {
     try {
       const createdBoard = await createBoardApi(newBoardData);
       console.log('create board api successful ', createdBoard)
       console.log('createBoard id ', createdBoard.data.board.id)
-      setActiveBoardId(createdBoard.data.board.id)
-      setBoardsData((prevBoards) => [...prevBoards, activeBoardData]);
-      // console.log('Board created successfully:', createdBoard);
+      handleChangeActiveBoard(createdBoard.data.board.id)
     } catch (error) {
       console.error('Failed to create board:', error);
     }
