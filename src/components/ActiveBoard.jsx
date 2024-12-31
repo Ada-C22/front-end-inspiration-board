@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import './css/ActiveBoard.css'
 import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
+import SortCardsInput from './SortCardsInput.jsx';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard,sortOption, handleSortChange}) => {
     const [boardEditing, setBoardEditing] = useState(false);
     const [addCardState, setAddCardState] = useState(false);
     
@@ -41,7 +42,8 @@ import EditBoardForm from './EditBoardForm';
   return (<section className ="active-board-container">
     <div className="title-section">
       <h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2>
-      <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4> 
+      <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4>
+      <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange}/>  
     </div>
     <div className="card-and-button-section">
       <ul className="ab-card-container">
@@ -94,6 +96,8 @@ import EditBoardForm from './EditBoardForm';
     handleEditBoard: PropTypes.func.isRequired,
     handleDeleteBoard: PropTypes.func.isRequired,
     addCard: PropTypes.func.isRequired,
+    sortOption: PropTypes.string.isRequired,
+    handleSortChange: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

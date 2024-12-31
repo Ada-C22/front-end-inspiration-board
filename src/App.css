@@ -3,3 +3,14 @@
   grid-template-rows: auto auto;
   background-color: bisque;
 }
+
+
+.sort-cards-component {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+  justify-content: right;
+  align-content: center;
+}

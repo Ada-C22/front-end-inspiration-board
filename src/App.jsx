@@ -126,7 +126,8 @@ function App() {
   
   const handleChangeActiveBoard = (id) =>  {
     setActiveBoardId(id);
-    openActiveBoard(true)
+    openActiveBoard(true);
+    sortCards(sortOption);
   }
 
   const addCard = (card) => {
@@ -255,8 +256,6 @@ function App() {
       openActiveBoard(false)
     };
     setBoardsData(newBoardsData);
-
-
   };
   
   return (
@@ -273,31 +272,22 @@ function App() {
           </div>
       </section>
 
-    {activeBoardOpen === true &&
-      <section className='bottom-section'>
-
-      <div className='active-board-container'>
-        <label htmlFor="sort">Sort Cards by:</label>
-          <select id='sortOptions' value={sortOption} onChange={setSortOption}>
-            <option value='id'>ID</option>
-            <option value='likes'>Likes</option>
-            <option value='alphabetically'>Alphabetically</option>
-          </select>
-      
-        {/* <SortCardsInput
-          handleSortChange={setSortOption} 
-          sortCards={sortCards}
-          sortOption={sortOption}/> */}
-        <ActiveBoard 
-          ActiveBoard={activeBoardData}
-          handleDeleteCard={handleDeleteCard}
-          handleLikeCard={handleLikeCard}
-          handleEditCard={handleEditCard}
-          handleEditBoard={handleEditBoard}
-          handleDeleteBoard={handleDeleteBoard}
-          addCard = {addCard} />
+      {activeBoardOpen === true &&
+        <section className='bottom-section'>
+          <div className='active-board-container'>
+            <ActiveBoard 
+              ActiveBoard={activeBoardData}
+              handleDeleteCard={handleDeleteCard}
+              handleLikeCard={handleLikeCard}
+              handleEditCard={handleEditCard}
+              handleEditBoard={handleEditBoard}
+              handleDeleteBoard={handleDeleteBoard}
+              addCard = {addCard}
+              sortOption = {sortOption}
+              handleSortChange = {handleSortChange} 
+            />
           </div>
-      </section>
+        </section>
       }
     </div>
   )
