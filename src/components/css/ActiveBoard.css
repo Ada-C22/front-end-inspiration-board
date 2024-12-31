@@ -3,11 +3,43 @@
   grid-template-columns: 33% 33% 33%;
 }
 
+.title-section {
+  display:flex;
+  padding-top: 10px;;
+  flex-flow:column;
+  align-content:center;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
 
 h2{
   font-size:15px;
 }
 
+
 .active-board-container{
   background-color: rgb(103, 76, 109);
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  margin-left:5px;
+  margin-right: 5px;
+  margin-top:5px;
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+  align-content: end;
+}
+
+.button-container button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+ul {
+  padding-left: 20px;
+  padding-right: 20px;
 }

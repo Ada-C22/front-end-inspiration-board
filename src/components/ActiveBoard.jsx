@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import './css/ActiveBoard.css'
 import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
-import SortCardsInput from './SortCardsInput.jsx';
+import SortCardsInput from './SortCardsInput';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard,sortOption, handleSortChange}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard, sortOption, handleSortChange}) => {
     const [boardEditing, setBoardEditing] = useState(false);
     const [addCardState, setAddCardState] = useState(false);
     
@@ -66,9 +66,11 @@ import SortCardsInput from './SortCardsInput.jsx';
             handleEditBoard={handleEditBoard}
           />
         }
-        <button className="add-card-button" onClick={handleClickAddCard}>add card</button>
-        <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
-        <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
+        <section className='button-container'>
+          <button className="add-card-button" onClick={handleClickAddCard}>add card</button>
+          <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
+          <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
+        </section>
 
       </div>
     </div>
