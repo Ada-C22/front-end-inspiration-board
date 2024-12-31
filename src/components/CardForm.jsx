@@ -29,11 +29,11 @@ const CardForm = ({ addCard, setAddCardState }) => {
 
     return (
         <section className='card-form'>
-        <h2 className='CardFormTitle'>Add a Card</h2>
+        <h2 className='card-form-title'>Add a Card</h2>
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor='message'>Message:</label>
-                <input
+            <div className='card-message-container'>
+                <label htmlFor='message'>Card Message :</label>
+                <textarea
                     type='text'
                     id='message'
                     name='message'
@@ -42,8 +42,8 @@ const CardForm = ({ addCard, setAddCardState }) => {
                     required
                 />
             </div>
-            <div>
-                <label htmlFor='Owner'>Name:</label>
+            <div className='card-owner-container'>
+                <label htmlFor='Owner'>Authors Name :</label>
                 <input
                     type='text'
                     id='owner'
@@ -53,7 +53,9 @@ const CardForm = ({ addCard, setAddCardState }) => {
                     required
                 />
             </div>
-            <button type='submit'>Add Card</button>
+            <div className='button-container'>
+                <button className='submit-button' type='submit'>Add Card</button>
+            </div>
         </form>
         </section>
     );

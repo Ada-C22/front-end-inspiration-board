@@ -1,9 +1,14 @@
-.card-buttons > {
+.card-buttons {
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  margin-left:5px;
+  margin-right: 5px;
+  margin-top:5px;
+  margin-bottom: 5px;
+  align-content: end;
 }
 
-.card-container{
+.card-info-container{
   display: grid; 
   grid-template-rows: auto auto;
   background-color:lightsteelblue;
@@ -15,10 +20,15 @@
   margin-left: 2px;
   margin-bottom: 2px;
   border: 1px solid gray;
+} 
+
+
+.card-buttons button{
+  margin-left: 5px;
+  margin-right: 5px;
 }
-.card-buttons{
-  align-content: end;
-}
+
+
 
 .card-owner {
   font-style: italic;

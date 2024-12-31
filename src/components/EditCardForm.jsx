@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
+import './css/EditCardForm.css'
 
 
 const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,setCardEditing}) => {
@@ -35,32 +36,36 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
 
   return (
     <form onSubmit={handleSubmit}>
-    <div>
-        <label htmlFor='message'>Message:</label>
-        <input
-            className='message-input-container'
-            type='text'
-            id='message'
-            name='message'
-            value={formData.message}
-            onChange={handleChange}
-            required
-        />
-    </div>
-    <div>
-        <label htmlFor='Owner'>Name:</label>
-        <input
-            className='owner-input-container'
-            type='text'
-            id='owner'
-            name='owner'
-            value={formData.owner}
-            onChange={handleChange}
-            required
-        />
-    </div>
-    <button type='submit'>Update Card</button>
-</form>
+      <section className='edit-card-container'>
+        <div className= 'message-container'>
+            <label htmlFor='message'>Message:</label>
+            <textarea
+                className='message-input-container'
+                type='text'
+                id='message'
+                name='message'
+                value={formData.message}
+                onChange={handleChange}
+                required
+            />
+        </div>
+        <div className='owner-container'>
+            <label htmlFor='Owner'>Name:</label>
+            <input
+                className='owner-input-container'
+                type='text'
+                id='owner'
+                name='owner'
+                value={formData.owner}
+                onChange={handleChange}
+                required
+            />
+        </div>
+        <div className='button-container'>
+          <button className= 'submit-button' type='submit'>Update Card</button>
+        </div>
+      </section>
+    </form>
 
   )    
 }

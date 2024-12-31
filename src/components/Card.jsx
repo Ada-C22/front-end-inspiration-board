@@ -21,30 +21,35 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
 
   return (
   <li className="card-container">
-    <div className="card-content">
-    <h5 className="card-owner">Author | {owner}</h5>
-    <h2 className="card-message">{message}</h2>
-    <p className="card-like-counts">{likesCount} likes</p>
-    </div>
-    <div>
-    {cardEditing > 0 && 
-      <EditCardForm 
-      id={id}
-      boardId={boardId}
-      likesCount={likesCount}
-      message={message}
-      owner={owner}
-      setCardEditing={setCardEditing}
-      handleEditCard={handleEditCard}
-      />}
-    </div>
-    <div className="card-buttons">
-      <button onClick={onClickLike}> like</button>
-      <button onClick={onClickDelete}>Delete</button>
-      <button onClick={onClickEditButton}>Edit</button>
-    </div>
-
+    {cardEditing === false &&
+      <section className='card-info-container'>
+        <div className="card-content">
+          <h5 className="card-owner">Author | {owner}</h5>
+          <h2 className="card-message">{message}</h2>
+          <p className="card-like-counts">{likesCount} likes</p>
+        </div>
+        <div className="card-buttons">
+          <button onClick={onClickLike}> like</button>
+          <button onClick={onClickDelete}>Delete</button>
+          <button onClick={onClickEditButton}>Edit</button>
+        </div>
+      </section> 
+    }
+    {cardEditing === true && 
+      <section className="edit-card-container">
+        <EditCardForm 
+        id={id}
+        boardId={boardId}
+        likesCount={likesCount}
+        message={message}
+        owner={owner}
+        setCardEditing={setCardEditing}
+        handleEditCard={handleEditCard}
+        />
+      </section>}
   </li>
+
+
 )
 }
 

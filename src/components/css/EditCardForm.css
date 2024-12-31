@@ -1,12 +1,12 @@
-.card-form {
+.edit-card-container {
   display:grid;
   grid-template-rows: auto auto; 
   margin-top: 2px;
   margin-right: 2px;
   margin-left: 2px; 
   margin-bottom: 2px; 
-  border: 1px solid palevioletred;
-  background-color: pink;
+  border: 1px solid rgb(21, 81, 88);
+  background-color: rgb(112, 187, 183);
   width:auto;
   height: 200px;
 }
@@ -14,7 +14,7 @@
   text-align: center;
 }
 
-.card-message-container {
+.message-container {
   display: grid;
   grid-template-rows: auto auto;
   margin-top: 2px;
@@ -23,17 +23,17 @@
   margin-right: 15px;
 }
 
-.card-message-container label{
+.message-container label{
   text-align: center;
 }
 
-.card-message-container textarea {
+.message-container textarea {
   height: 50px; 
   text-align:start;
   text-wrap-mode:wrap;
 }
 
-.card-owner-container {
+.owner-container {
   display: grid;
   grid-template-rows: auto auto;
   text-align:center;
@@ -44,7 +44,9 @@
 }
 
 .button-container {
-  display:flex;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
   align-content: end;
   justify-content: center;
 }
