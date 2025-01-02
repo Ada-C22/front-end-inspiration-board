@@ -5,17 +5,24 @@
   padding-right: 40px; 
   padding-top: 40px;
   padding-bottom: 40px;
+  border-radius: 25px;
 }
 .board-list-title{
   display:flex;
   flex-direction: column;
+  color: #f4fcfa;
+  font-size: 50px;
 }
 
-
+.board-list-index {
+  color:#f4fcfa;
+  font-size: 25px;
+}
 
 .board-list {
   display: flex; 
   flex-direction: column;
+  border-radius: 25px;
 }
 
 li {
@@ -27,3 +34,9 @@ li {
   grid-template-columns: 50% 50%;
 }
 
+.create-board-button {
+  font-size: 25px;
+  color:#f4fcfa; 
+  background-color: #403942;
+
+}

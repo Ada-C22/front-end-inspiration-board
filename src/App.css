@@ -1,6 +1,9 @@
 .top-section{
   display: grid;
   grid-template-rows: auto auto;
-  background-color: bisque;
+  background-color: #9A879D;
+  ;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
 }
 

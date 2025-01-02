@@ -5,8 +5,8 @@
   margin-right: 2px;
   margin-left: 2px; 
   margin-bottom: 2px; 
-  border: 1px solid rgb(21, 81, 88);
-  background-color: rgb(112, 187, 183);
+  border: 1px solid #34192c;
+  background-color:#7A3B69;
   width:auto;
   height: 200px;
 }
@@ -49,4 +49,11 @@
   margin-bottom: 5px;
   align-content: end;
   justify-content: center;
+}
+
+.button-container button{
+  font-size: 15px;
+  color:#f4fcfa; 
+  background-color: #403942;
+  border-radius: 25px;
 }

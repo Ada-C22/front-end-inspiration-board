@@ -14,13 +14,27 @@
   
 }
 
+.title-section > .active-board-name {
+  font-size: 60px;
+  color:#D7DEDC;
+  margin-bottom:5px;
+}
+
+.title-section > .active-board-author {
+  font-size: 40px;
+  color: pink;
+  margin-top:5px;
+}
+
 h2{
   font-size:15px;
 }
 
 
 .active-board-container{
-  background-color: rgb(103, 76, 109);
+  background-color:#563440;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 
 .button-container {

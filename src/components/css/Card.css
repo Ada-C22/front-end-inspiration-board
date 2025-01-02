@@ -1,17 +1,17 @@
 .card-buttons {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  margin-left:5px;
-  margin-right: 5px;
-  margin-top:5px;
-  margin-bottom: 5px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-bottom: 15px;
   align-content: end;
+  justify-items: center;
 }
 
 .card-info-container{
   display: grid; 
   grid-template-rows: auto auto;
-  background-color:lightsteelblue;
+  background-color:#cab4ce;
   width: auto;
   height: 200px;
   text-align: center;
@@ -19,17 +19,32 @@
   margin-right: 2px;
   margin-left: 2px;
   margin-bottom: 2px;
-  border: 1px solid gray;
+  border: 1px solid #403942;
+  border-radius: 25px;
+  justify-items:center;
 } 
 
 
 .card-buttons button{
-  margin-left: 5px;
-  margin-right: 5px;
+  font-size:medium;
+  width: 100px;
+  border-radius: 25px;
+  color:#f4fcfa; 
+  background-color: #403942;
 }
-
 
 
 .card-owner {
   font-style: italic;
+  font-size: medium;
+}
+
+.card-message {
+  font-size:large;
+}
+
+.card-like-counts {
+  margin-top: 35px;
+  font-style:italic;
+  color: #7A3B69
 }

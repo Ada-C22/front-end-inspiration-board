@@ -38,7 +38,7 @@ const BoardList = ({Boards, handleChangeActiveBoard, activeBoardId, setCreateBoa
     <span className='board-list-index'><p className='tile-column'>Board Title</p><p className='owner-column'>Board Owner</p></span>
     {getVisionBoardList(Boards)}
       {createBoardState === false && 
-      <button className="CreateBoardButton" onClick={handleClickCreateBoard}>Create New Board</button>
+      <button className="create-board-button" onClick={handleClickCreateBoard}>Create New Board</button>
       }
       {createBoardState === true &&
       <BoardForm handleCreateBoard={handleCreateBoard} setCreateBoardState={setCreateBoardState}/>}
