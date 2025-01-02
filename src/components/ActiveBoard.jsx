@@ -6,7 +6,7 @@ import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
 import SortCardsInput from './SortCardsInput';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard, sortOption, handleSortChange,sortCards}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard, sortOption, handleSortChange,sortCards, openActiveBoard}) => {
     const [boardEditing, setBoardEditing] = useState(false);
     const [addCardState, setAddCardState] = useState(false);
     
@@ -20,6 +20,10 @@ import SortCardsInput from './SortCardsInput';
 
     const handleClickDeleteBoard = () => {
       handleDeleteBoard(ActiveBoard.id)
+    }
+
+    const handleExitActiveBoard = () => {
+      openActiveBoard(false)
     }
 
     const getActiveBoardCards = (cards) => {
@@ -42,7 +46,7 @@ import SortCardsInput from './SortCardsInput';
   return (<section className ="active-board-container">
     {boardEditing === false &&
     <div className="title-section">
-      <h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2>
+      <span className="line-one"><h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2><button className="exit-active-board-button" onClick={handleExitActiveBoard}>X</button></span>
       <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4>
       <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange} sortCards={sortCards}/>  
     </div>
@@ -104,6 +108,9 @@ import SortCardsInput from './SortCardsInput';
     sortOption: PropTypes.string.isRequired,
     handleSortChange: PropTypes.func.isRequired,
     sortCards: PropTypes.func.isRequired,
+    setActiveBoardState: PropTypes.func.isRequired,
+
+
     }
     
   export default ActiveBoard

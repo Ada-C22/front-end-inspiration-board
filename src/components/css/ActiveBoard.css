@@ -14,7 +14,7 @@
   
 }
 
-.title-section > .active-board-name {
+.active-board-name {
   font-size: 60px;
   color:#D7DEDC;
   margin-bottom:5px;
@@ -75,4 +75,22 @@ ul {
 .delete-board-button {
   border-radius:25px;
   font-size:25px;
+}
+
+.exit-active-board-button {
+  border-radius: 25px;
+  font-size: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white; 
+  background-color: transparent;
+  outline-color: white;
+
+}
+
+.line-one {
+  display : grid;
+  grid-template-columns: 95% 5%;
 }

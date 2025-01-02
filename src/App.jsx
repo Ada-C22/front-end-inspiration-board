@@ -285,6 +285,7 @@ function App() {
               sortOption = {sortOption}
               handleSortChange = {handleSortChange} 
               sortCards = {sortCards}
+              openActiveBoard= {openActiveBoard}
             />
           </div>
         </section>
