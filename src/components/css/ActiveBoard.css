@@ -5,7 +5,7 @@
 
 .title-section {
   display:flex;
-  padding-top: 10px;;
+  padding-top: 10px;
   flex-flow:column;
   align-content:center;
   justify-content: center;
@@ -37,23 +37,42 @@ h2{
   border-bottom-left-radius: 25px;
 }
 
-.button-container {
+.active-board-button-container  {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  margin-left:5px;
-  margin-right: 5px;
+  margin-left:15px;
+  margin-right: 15px;
   margin-top:5px;
   margin-bottom: 5px;
   padding-bottom: 15px;
   align-content: end;
 }
 
-.button-container button {
+.active-board-button-container button {
   margin-left: 5px;
+  background-color: #403942;
+  color: #f4fcfa; 
   margin-right: 5px;
 }
 
 ul {
   padding-left: 20px;
   padding-right: 20px;
+}
+
+
+.add-card-button {
+  border-radius: 25px;
+  font-size: 25px;
+}
+
+.edit-board-button {
+  border-radius:25px;
+  font-size:25px
+
+}
+
+.delete-board-button {
+  border-radius:25px;
+  font-size:25px;
 }

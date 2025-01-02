@@ -27,13 +27,13 @@ const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleL
         <div className="card-content">
           <h5 className="card-owner">Author | {owner}</h5>
           <h2 className="card-message">{message}</h2>
-          <p className="card-like-counts">{likesCount} likes</p>
         </div>
         <div className="card-buttons">
-          <button onClick={onClickLike}> like</button>
+          <button onClick={onClickLike}> Like</button>
           <button onClick={onClickDelete}>Delete</button>
           <button onClick={onClickEditButton}>Edit</button>
         </div>
+        <p className="card-like-counts">{likesCount} likes</p>
       </section> 
     }
     {cardEditing === true && 

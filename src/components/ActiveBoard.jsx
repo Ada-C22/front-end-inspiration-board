@@ -6,7 +6,7 @@ import { useState } from 'react';
 import EditBoardForm from './EditBoardForm';
 import SortCardsInput from './SortCardsInput';
 
-  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard, sortOption, handleSortChange}) => {
+  const ActiveBoard = ({ActiveBoard, handleDeleteCard, handleLikeCard, handleEditCard, handleEditBoard, handleDeleteBoard, addCard, sortOption, handleSortChange,sortCards}) => {
     const [boardEditing, setBoardEditing] = useState(false);
     const [addCardState, setAddCardState] = useState(false);
     
@@ -40,11 +40,24 @@ import SortCardsInput from './SortCardsInput';
       });
   };
   return (<section className ="active-board-container">
+    {boardEditing === false &&
     <div className="title-section">
       <h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2>
       <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4>
-      <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange}/>  
+      <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange} sortCards={sortCards}/>  
     </div>
+    }
+    <div className="edit-board-container">
+        {boardEditing === true &&
+          <EditBoardForm
+            id={ActiveBoard.id}
+            title={ActiveBoard.title}
+            owner={ActiveBoard.owner}
+            setBoardEditing={setBoardEditing}
+            handleEditBoard={handleEditBoard}
+          />
+        }
+
     <div className="card-and-button-section">
       <ul className="ab-card-container">
         {getActiveBoardCards(ActiveBoard.cards)}
@@ -56,20 +69,10 @@ import SortCardsInput from './SortCardsInput';
         }
 
       </ul>
-      <div className="edit-board-container">
-        {boardEditing > 0 &&
-          <EditBoardForm
-            id={ActiveBoard.id}
-            title={ActiveBoard.title}
-            owner={ActiveBoard.owner}
-            setBoardEditing={setBoardEditing}
-            handleEditBoard={handleEditBoard}
-          />
-        }
-        <section className='button-container'>
-          <button className="add-card-button" onClick={handleClickAddCard}>add card</button>
-          <button className="edit-board-button" onClick={handleClickEditBoard}>edit board</button>
-          <button className="delete-board-buttton" onClick={handleClickDeleteBoard}>delete board</button>
+        <section className='active-board-button-container'>
+          <button className="add-card-button" onClick={handleClickAddCard}>Add Card</button>
+          <button className="edit-board-button" onClick={handleClickEditBoard}>Edit Board</button>
+          <button className="delete-board-button" onClick={handleClickDeleteBoard}>Delete Board</button>
         </section>
 
       </div>
@@ -100,6 +103,7 @@ import SortCardsInput from './SortCardsInput';
     addCard: PropTypes.func.isRequired,
     sortOption: PropTypes.string.isRequired,
     handleSortChange: PropTypes.func.isRequired,
+    sortCards: PropTypes.func.isRequired,
     }
     
   export default ActiveBoard

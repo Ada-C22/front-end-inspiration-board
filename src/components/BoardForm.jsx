@@ -27,6 +27,15 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
     setCreateBoardState(false)
   };
 
+  const handleCreateBoardExitButton =(event)=> {
+    event.preventDefault();
+    setFormData({
+      title:'',
+      owner:'',
+    });
+    setCreateBoardState(false)
+  };
+
   return (
     <section className='board-form-container'>
       <span>
@@ -55,7 +64,10 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
           />
         </div>
         </div>
-        <button className='submit-button' type='submit'>Create Board</button>
+        <section className='button-container'>
+        <button className='create-board-submit-button' type='submit'>Create Board</button>
+        <button className= 'create-board-exit-button' type='exit' onClick={handleCreateBoardExitButton}>X</button>
+        </section>
       </form>
       </span>
     </section>

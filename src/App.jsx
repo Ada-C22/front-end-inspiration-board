@@ -197,7 +197,6 @@ function App() {
     });
     activeBoardData.cards = newData; 
     handleSetActiveBoard(activeBoardData)
-    sortCards(sortOption)
   };
 
   const handleEditCard = (editedCardData) => {
@@ -285,6 +284,7 @@ function App() {
               addCard = {addCard}
               sortOption = {sortOption}
               handleSortChange = {handleSortChange} 
+              sortCards = {sortCards}
             />
           </div>
         </section>

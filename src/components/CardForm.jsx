@@ -27,6 +27,15 @@ const CardForm = ({ addCard, setAddCardState }) => {
         setAddCardState(false)
     };
 
+    const handleCardFormExit = (event) => {
+        event.preventDefault();
+        setFormData({
+            message:'',
+            owner:''
+        })
+        setAddCardState(false)
+    }
+
     return (
         <section className='card-form'>
         <h2 className='card-form-title'>Add a Card</h2>
@@ -54,7 +63,8 @@ const CardForm = ({ addCard, setAddCardState }) => {
                 />
             </div>
             <div className='button-container'>
-                <button className='submit-button' type='submit'>Add Card</button>
+                <button className='add-card-submit-button' type='submit'>Add Card</button>
+                <button className= 'card-form-exit-button' type='exit' onClick={handleCardFormExit}>X</button>
             </div>
         </form>
         </section>

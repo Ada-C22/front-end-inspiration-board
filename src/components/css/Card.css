@@ -3,7 +3,6 @@
   grid-template-columns: 33% 33% 33%;
   padding-right: 25px;
   padding-left: 25px;
-  margin-bottom: 15px;
   align-content: end;
   justify-items: center;
 }
@@ -13,7 +12,7 @@
   grid-template-rows: auto auto;
   background-color:#cab4ce;
   width: auto;
-  height: 200px;
+  height: 300px;
   text-align: center;
   margin-top: 2px;
   margin-right: 2px;
@@ -24,10 +23,14 @@
   justify-items:center;
 } 
 
+.card-buttons {
+  display:flex; 
+  justify-content: center;
+}
 
 .card-buttons button{
-  font-size:medium;
-  width: 100px;
+  font-size:16px;
+  width: 100px; 
   border-radius: 25px;
   color:#f4fcfa; 
   background-color: #403942;
@@ -36,15 +39,19 @@
 
 .card-owner {
   font-style: italic;
-  font-size: medium;
+  font-size: 20px;
+  padding-bottom: 25px;
 }
 
 .card-message {
-  font-size:large;
+  font-size:20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
 }
 
 .card-like-counts {
-  margin-top: 35px;
+  padding-top: 5px;
   font-style:italic;
   color: #7A3B69
 }

@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types';
+import './css/SortCardsInput.css'
+const SortCardsInput = ({sortOption,handleSortChange,sortCards}) => {
+  const handleReSort = (event) => {
+    sortCards(sortOption)
+  }
 
-const SortCardsInput = ({sortOption,handleSortChange}) => {
 return (
-  <div> 
+  <div className='sort-cards-container'> 
           <label htmlFor="sortOptions">Sort Cards by:</label>
           <select id='sortOptions' value={sortOption} onChange={handleSortChange}>
-            <option value='id'>ID</option>
+            <option value='id'>Age</option>
             <option value='likes'>Likes</option>
-            <option value='alphabetically'>Alphabetically</option>
+            <option value='alphabetically'>Owner</option>
           </select>
+          <button className='re-sort-button' onClick={handleReSort}>Re-Sort</button>
         </div> 
         )
   }
@@ -16,6 +21,7 @@ return (
 SortCardsInput.propTypes = {
   sortOption : PropTypes.string.isRequired,
   handleSortChange : PropTypes.func.isRequired,
+  sortCards:PropTypes.func.isRequired,
 }
 
 

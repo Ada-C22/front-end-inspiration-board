@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
+import './css/EditBoardForm.css'
 
 
 const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
@@ -29,10 +30,21 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
     setBoardEditing(false);
   };
 
+
+  const handleExitEditBoard =(event) => {
+    event.preventDefault()
+    setFormData({
+      id:id, 
+      title: title,
+      owner: owner,
+    });
+    setBoardEditing(false);    
+  }
   return (
     <form onSubmit={handleSubmit}>
-    <div>
-        <label htmlFor='Title'>Title:</label>
+    <div className='edit-board-form'>
+      <div className='title-edit-container'>
+        <label className='title-board-edit-label' htmlFor='Title'>Board Title |</label>
         <input
             className='title-input-container'
             type='text'
@@ -42,20 +54,30 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
             onChange={handleChange}
             required
         />
+      </div>
+      <div className='owner-edit-container'>
+        <h4 className ="active-board-author"> Board Owner | {owner}</h4>
+      </div>
+      <div className='edit-board-button-container'>
+          <button className= 'edit-board-submit-button' type='submit'>Update Board</button>
+          <button type='exit-edit-board' className='exit-edit-board-button' onClick={handleExitEditBoard}>X</button>
+      </div>
+
     </div>
+    
     {/* <div>
-        <label htmlFor='Owner'>Name:</label>
+        <label htmlFor='Title'>Board Owner |</label>
         <input
-            className='owner-input-container'
+            className='Owner-input-container'
             type='text'
-            id='owner'
+            id='Owner'
             name='owner'
             value={formData.owner}
             onChange={handleChange}
             required
         />
     </div> */}
-    <button type='submit'>Update Board</button>
+
 </form>
 
   )    

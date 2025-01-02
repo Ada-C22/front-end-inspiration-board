@@ -49,3 +49,15 @@
   align-content: end;
   justify-content: center;
 }
+
+.add-card-submit-button {
+  background-color: #403942;
+  color: #f4fcfa;
+  border-radius: 25px;
+}
+.card-form-exit-button {
+  background-color: #403942;
+  width: 40px;
+  border-radius: 25px;
+  color: #f4fcfa; 
+}

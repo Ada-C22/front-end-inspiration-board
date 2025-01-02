@@ -4,15 +4,14 @@ import './css/EditCardForm.css'
 
 
 const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,setCardEditing}) => {
-
-  const [formData, setFormData] = useState({
+  const defaultFormData = {
     id:id, 
     boardId:boardId,
     likesCount: likesCount, 
     message: message,
-    owner: owner,
-  });
-
+    owner: owner
+  }
+  const [formData, setFormData] = useState(defaultFormData);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -32,6 +31,12 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
     }
     handleEditCard(newCardInfo);
     setCardEditing(false);
+  };
+
+  const handleExit = (event) => {
+    handleEditCard(defaultFormData)
+    setCardEditing(false);
+
   };
 
   return (
@@ -62,7 +67,8 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
             />
         </div>
         <div className='button-container'>
-          <button className= 'submit-button' type='submit'>Update Card</button>
+          <button className= 'edit-card-submit-button' type='submit'>Update Card</button>
+          <button className= 'edit-card-exit-button' type='exit' onClick={handleExit}>X</button>
         </div>
       </section>
     </form>

@@ -12,6 +12,14 @@ button {
   font-size:medium;
 }
 
+.board-title {
+  font-size:25px;
+}
+
+.board-owner {
+  font-size: 25px;
+}
+
 button:first-of-type {
   border-top-left-radius:25px; 
   border-top-right-radius: 25px;
