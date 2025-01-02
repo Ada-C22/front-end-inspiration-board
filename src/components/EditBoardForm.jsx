@@ -54,10 +54,23 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
             onChange={handleChange}
             required
         />
+        
       </div>
-      <div className='owner-edit-container'>
+      <div>
+        <label htmlFor='Title'>Board Owner |</label>
+        <input
+            className='Owner-input-container'
+            type='text'
+            id='owner'
+            name='owner'
+            value={formData.owner}
+            onChange={handleChange}
+            required
+        />
+    </div>
+      {/* <div className='owner-edit-container'>
         <h4 className ="active-board-author"> Board Owner | {owner}</h4>
-      </div>
+      </div> */}
       <div className='edit-board-button-container'>
           <button className= 'edit-board-submit-button' type='submit'>Update Board</button>
           <button type='exit-edit-board' className='exit-edit-board-button' onClick={handleExitEditBoard}>X</button>
@@ -65,18 +78,7 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
 
     </div>
     
-    {/* <div>
-        <label htmlFor='Title'>Board Owner |</label>
-        <input
-            className='Owner-input-container'
-            type='text'
-            id='Owner'
-            name='owner'
-            value={formData.owner}
-            onChange={handleChange}
-            required
-        />
-    </div> */}
+
 
 </form>
 

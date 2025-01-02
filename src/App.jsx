@@ -83,9 +83,11 @@ const createBoardApi = (boardData) => {
 };
 
 
-const updateBoardTitleApi = (boardData) => {
+const updateBoardsDataApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
-  return axios.put(putBoardTitleEndpoint,({'title':boardData.title}))
+  return axios.put(putBoardTitleEndpoint,({'title':boardData.title, 'owner':boardData.owner}))
+
+
   .catch(error=> console.error(error));
 }
 
@@ -239,9 +241,7 @@ function App() {
       title:editedBoardData.title,
       owner:editedBoardData.owner,
     }
-    updateBoardTitleApi(editedBoardData)
-
-    // updateBoardsDataApi(editedBoardData);
+    updateBoardsDataApi(editedBoardData);
     setActiveBoardData(newActiveBoardData)
     setBoardsData(newBoardsData);
   };
