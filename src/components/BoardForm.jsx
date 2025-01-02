@@ -55,7 +55,7 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
           />
         </div>
         </div>
-        <button type='submit'>Create Board</button>
+        <button className='submit-button' type='submit'>Create Board</button>
       </form>
       </span>
     </section>

@@ -2,11 +2,26 @@
   display: grid; 
   grid-template-columns: 50% 50%;
   justify-items: left;
-  border-radius: 25px;
-  color:#563440;
+  color:aliceblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
   font-size:medium;
+  background-color:#563440;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 
-button {
+.form-container input {
+  background-color: #9A879D;
+  width: 30pc;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+}
+
+.submit-button {
   color:#563440;
+  border-radius: 25px;
 }

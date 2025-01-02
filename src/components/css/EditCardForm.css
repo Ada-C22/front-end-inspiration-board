@@ -9,6 +9,8 @@
   background-color:#7A3B69;
   width:auto;
   height: 200px;
+  border-radius: 25px;
+  color:#f4fcfa;
 }
 .card-form h2 {
   text-align: center;

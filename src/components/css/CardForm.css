@@ -5,10 +5,11 @@
   margin-right: 2px;
   margin-left: 2px; 
   margin-bottom: 2px; 
-  border: 1px solid palevioletred;
-  background-color: pink;
+  border: 1px solid #555056;
+  background-color: #fbd9ff;
   width:auto;
   height: 200px;
+  border-radius: 25px;
 }
 .card-form h2 {
   text-align: center;

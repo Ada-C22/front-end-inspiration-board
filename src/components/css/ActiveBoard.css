@@ -9,8 +9,8 @@
   flex-flow:column;
   align-content:center;
   justify-content: center;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
   
 }
 
@@ -22,7 +22,7 @@
 
 .title-section > .active-board-author {
   font-size: 40px;
-  color: pink;
+  color: #D7DEDC;
   margin-top:5px;
 }
 
