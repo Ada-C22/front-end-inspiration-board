@@ -7,7 +7,7 @@ import './App.css'
 import CardForm from './components/CardForm'
 // import BoardForm from './components/BoardForm' // this is the form that is not rendering
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
-import DeleteConfirmation from './components/DeleteConfirmation'
+// import DeleteConfirmation from './components/DeleteConfirmation'
 
 
 
@@ -51,7 +51,7 @@ const convertCardFromApi = (apiCard) => {
   delete jsCard.likes_count; 
   delete jsCard.board_id;
   return jsCard
-  };
+};
 
 
 const deleteCardApi = (id) => {
@@ -60,7 +60,7 @@ const deleteCardApi = (id) => {
   .catch(error=> {
     console.log(error);
   });
-}
+};
 
 const convertCardForApi = (jsxCard) => {
   const jsonCard = {
@@ -139,7 +139,7 @@ function App() {
       .then(response => {
         setActiveBoardData(prevState => ({
           ...prevState,
-          cards: [...prevState.cards, convertCardFromApi(response.data)]
+          cards: [...prevState.cards, convertCardFromApi(response.data.card)]
         }));
       })
       .catch(error => {
