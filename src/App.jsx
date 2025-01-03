@@ -6,7 +6,6 @@ import './App.css'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
 
 
-
 /////////////////// helper functions for api calls/ rendering the page//////////////////////////////
 
 const getBoardsApi = () => {
@@ -47,7 +46,7 @@ const convertCardFromApi = (apiCard) => {
   delete jsCard.likes_count; 
   delete jsCard.board_id;
   return jsCard
-  };
+};
 
 
 const deleteCardApi = (id) => {
@@ -56,7 +55,7 @@ const deleteCardApi = (id) => {
   .catch(error=> {
     console.log(error);
   });
-}
+};
 
 const convertCardForApi = (jsxCard) => {
   const jsonCard = {
@@ -135,7 +134,7 @@ function App() {
       .then(response => {
         setActiveBoardData(prevState => ({
           ...prevState,
-          cards: [...prevState.cards, convertCardFromApi(response.data)]
+          cards: [...prevState.cards, convertCardFromApi(response.data.card)]
         }));
       })
       .catch(error => {
