@@ -6,7 +6,9 @@ import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 import CardForm from './components/CardForm'
 // import BoardForm from './components/BoardForm' // this is the form that is not rendering
-const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
+// const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
+const apiEndpointLink = process.env.REACT_APP_API_URL;
+
 
 
 
