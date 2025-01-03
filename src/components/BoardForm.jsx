@@ -40,30 +40,32 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
     <section className='board-form-container'>
       <span>
       <form onSubmit={handleSubmit}>
-        <div className = 'form-container'>
-        <div>
-          <label htmlFor='title'>Board Title:</label>
-          <input
-            type='text'
-            id='title'
-            name='title'
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor='owner'>Board Owner:</label>
-          <input 
-            type='text'
-            id='owner'
-            name='owner'
-            value={formData.owner}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        </div>
+        <section className = 'form-container'>
+          <div className='board-form-title-section'>
+            <label htmlFor='title'>Board Title:</label>
+            <input
+              className='board-form-title-input'
+              type='text'
+              id='title'
+              name='title'
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className='board-form-owner-section'>
+            <label htmlFor='owner'>Board Owner:</label>
+            <input 
+              className='board-form-owner-input'
+              type='text'
+              id='owner'
+              name='owner'
+              value={formData.owner}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </section>
         <section className='button-container'>
         <button className='create-board-submit-button' type='submit'>Create Board</button>
         <button className= 'create-board-exit-button' type='exit' onClick={handleCreateBoardExitButton}>X</button>

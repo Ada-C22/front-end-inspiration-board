@@ -59,8 +59,8 @@ import SortCardsInput from './SortCardsInput';
   return (<section className ="active-board-container">
     {boardEditing === false &&
     <div className="title-section">
-      <span className="line-one"><h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2><button className="exit-active-board-button" onClick={handleExitActiveBoard}>X</button></span>
-      <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4>
+      <span className="line-one"><h2 className ="active-board-name">{ActiveBoard.title}</h2><button className="exit-active-board-button" onClick={handleExitActiveBoard}>X</button></span>
+      <h4 className ="active-board-author"> Owned By : {ActiveBoard.owner}</h4>
       <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange} sortCards={sortCards}/>  
     </div>
     }
