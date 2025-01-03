@@ -2,12 +2,8 @@ import { useState, useEffect } from 'react'
 import BoardList from'./components/BoardList'
 import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
-// import SortCardsInput from './components/SortcardsInput'
 import './App.css'
-import CardForm from './components/CardForm'
-// import BoardForm from './components/BoardForm' // this is the form that is not rendering
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
-import DeleteConfirmation from './components/DeleteConfirmation'
 
 
 
@@ -149,13 +145,11 @@ function App() {
   };
 
   const handleSortChange = (event) => {
-    console.log('Sort option changed:', event.target.value);  // Debug log
     setSortOption(event.target.value);
     sortCards(event.target.value);
   };
 
   const sortCards = (sortOption) => {
-    console.log('Sorting cards by:', sortOption);  // Debug log
     const sortedCards = [...activeBoardData.cards];
     if (sortOption === 'id') {
       sortedCards.sort((a, b) => a.id - b.id);
@@ -164,8 +158,6 @@ function App() {
     } else if (sortOption === 'alphabetically') {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
-
-    console.log('Sorted cards:', sortedCards);  // Debug log
 
     setActiveBoardData(prevState => ({
       ...prevState,
