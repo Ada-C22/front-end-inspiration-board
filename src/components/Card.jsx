@@ -8,11 +8,21 @@ import EditCardForm from './EditCardForm';
 const Card =({id, boardId, owner, message, likesCount, handleDeleteCard, handleLikeCard, handleEditCard}) => {
   const [cardEditing, setCardEditing] = useState(false);
   
+
+  const deleteCardAlertMessage = () => {
+    if (confirm("Are you sure you want to delete this card?")) {
+      handleDeleteCard(id)
+    } else {
+      console.log('the card was not deleted');
+    }
+  }
+
+
   const onClickEditButton = () => {
     setCardEditing(!cardEditing)
   }
   const onClickDelete = () =>{
-    handleDeleteCard(id)
+    deleteCardAlertMessage()
   };
 
 

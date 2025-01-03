@@ -7,13 +7,14 @@ import './App.css'
 import CardForm from './components/CardForm'
 // import BoardForm from './components/BoardForm' // this is the form that is not rendering
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
+import DeleteConfirmation from './components/DeleteConfirmation'
 
 
 
 /////////////////// helper functions for api calls/ rendering the page//////////////////////////////
 
 const getBoardsApi = () => {
-  const getBoardsEnpoint = apiEndpointLink + '/boards'
+  const getBoardsEnpoint = apiEndpointLink + '/boards/'
   return axios.get(getBoardsEnpoint)
   .then((response) => {
     const apiBoards = response.data
@@ -291,6 +292,7 @@ function App() {
         </section>
       }
     </div>
+
   )
 }
 

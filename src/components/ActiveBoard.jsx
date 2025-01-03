@@ -12,14 +12,24 @@ import SortCardsInput from './SortCardsInput';
     
     const handleClickAddCard = () => {
       setAddCardState(true)
+      
     }
     
+    const deleteAlertMessage = () => {
+        if (confirm("Are you sure you want to delete this board?")) {
+          handleDeleteBoard(ActiveBoard.id);
+        } else {
+          console.log('the board was not deleted');
+        }
+      }
+
+
     const handleClickEditBoard = () => {
       setBoardEditing(true)
     }
 
     const handleClickDeleteBoard = () => {
-      handleDeleteBoard(ActiveBoard.id)
+        deleteAlertMessage();
     }
 
     const handleExitActiveBoard = () => {
@@ -43,6 +53,9 @@ import SortCardsInput from './SortCardsInput';
         );
       });
   };
+  
+
+
   return (<section className ="active-board-container">
     {boardEditing === false &&
     <div className="title-section">
@@ -108,9 +121,7 @@ import SortCardsInput from './SortCardsInput';
     sortOption: PropTypes.string.isRequired,
     handleSortChange: PropTypes.func.isRequired,
     sortCards: PropTypes.func.isRequired,
-    setActiveBoardState: PropTypes.func.isRequired,
+    openActiveBoard: PropTypes.func.isRequired,
+  }
 
-
-    }
-    
   export default ActiveBoard
