@@ -12,14 +12,24 @@ import SortCardsInput from './SortCardsInput';
     
     const handleClickAddCard = () => {
       setAddCardState(true)
+      
     }
     
+    const deleteAlertMessage = () => {
+        if (confirm("Are you sure you want to delete this board?")) {
+          handleDeleteBoard(ActiveBoard.id);
+        } else {
+          console.log('the board was not deleted');
+        }
+      }
+
+
     const handleClickEditBoard = () => {
       setBoardEditing(true)
     }
 
     const handleClickDeleteBoard = () => {
-      handleDeleteBoard(ActiveBoard.id)
+        deleteAlertMessage();
     }
 
     const handleExitActiveBoard = () => {
@@ -43,13 +53,17 @@ import SortCardsInput from './SortCardsInput';
         );
       });
   };
-  return (<section className ="active-board-container">
+  
+
+
+  return (
+  <section className ="active-board-container">
     {boardEditing === false &&
-    <div className="title-section">
-      <span className="line-one"><h2 className ="active-board-name">Board Title | {ActiveBoard.title}</h2><button className="exit-active-board-button" onClick={handleExitActiveBoard}>X</button></span>
-      <h4 className ="active-board-author"> Board Owner | {ActiveBoard.owner}</h4>
-      <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange} sortCards={sortCards}/>  
-    </div>
+      <div className="title-section">
+        <span className="line-one"><h2 className ="active-board-name">{ActiveBoard.title}</h2><button className="exit-active-board-button" onClick={handleExitActiveBoard}>X</button></span>
+        <h4 className ="active-board-author"> Owned By : {ActiveBoard.owner}</h4>
+        <SortCardsInput sortOption={sortOption} handleSortChange={handleSortChange} sortCards={sortCards}/>  
+      </div>
     }
     <div className="edit-board-container">
         {boardEditing === true &&
@@ -61,27 +75,25 @@ import SortCardsInput from './SortCardsInput';
             handleEditBoard={handleEditBoard}
           />
         }
+    </div>
 
     <div className="card-and-button-section">
       <ul className="ab-card-container">
         {getActiveBoardCards(ActiveBoard.cards)}
         {addCardState === true &&
-        <CardForm 
-          setAddCardState={setAddCardState}
-          addCard={addCard}
-          />
+          <CardForm 
+            setAddCardState={setAddCardState}
+            addCard={addCard}
+            />
         }
-
       </ul>
-        <section className='active-board-button-container'>
-          <button className="add-card-button" onClick={handleClickAddCard}>Add Card</button>
-          <button className="edit-board-button" onClick={handleClickEditBoard}>Edit Board</button>
-          <button className="delete-board-button" onClick={handleClickDeleteBoard}>Delete Board</button>
-        </section>
 
-      </div>
+      <section className='active-board-button-container'>
+        <button className="add-card-button" onClick={handleClickAddCard}>Add Card</button>
+        <button className="edit-board-button" onClick={handleClickEditBoard}>Edit Board</button>
+        <button className="delete-board-button" onClick={handleClickDeleteBoard}>Delete Board</button>
+      </section>
     </div>
-  
   </section>
   )
   }
@@ -108,9 +120,7 @@ import SortCardsInput from './SortCardsInput';
     sortOption: PropTypes.string.isRequired,
     handleSortChange: PropTypes.func.isRequired,
     sortCards: PropTypes.func.isRequired,
-    setActiveBoardState: PropTypes.func.isRequired,
+    openActiveBoard: PropTypes.func.isRequired,
+  }
 
-
-    }
-    
   export default ActiveBoard

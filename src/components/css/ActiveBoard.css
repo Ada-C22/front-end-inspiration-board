@@ -15,13 +15,13 @@
 }
 
 .active-board-name {
-  font-size: 60px;
+  font-size: 40px;
   color:#D7DEDC;
   margin-bottom:5px;
 }
 
 .title-section > .active-board-author {
-  font-size: 40px;
+  font-size: 30px;
   color: #D7DEDC;
   margin-top:5px;
 }
@@ -63,23 +63,23 @@ ul {
 
 .add-card-button {
   border-radius: 25px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .edit-board-button {
   border-radius:25px;
-  font-size:25px
+  font-size:20px
 
 }
 
 .delete-board-button {
   border-radius:25px;
-  font-size:25px;
+  font-size:20px;
 }
 
 .exit-active-board-button {
   border-radius: 25px;
-  font-size: 50px;
+  font-size: 40px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
