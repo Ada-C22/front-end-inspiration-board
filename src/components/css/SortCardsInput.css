@@ -1,0 +1,26 @@
+.sort-cards-container {
+  font-size: 20px;
+  color: #f4fcfa;
+}
+.sort-cards-container label{
+  padding-left: 15px;
+  padding-right:15px;
+}
+
+.sort-cards-container select {
+  padding-left:15px;
+  font-size:20px;
+  color: #563440;
+}
+
+.re-sort-button {
+  border-radius: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-left:15px;
+  padding-right:15px;
+  font-size:20px;
+  color:#563440;
+  background-color: #929896;
+
+}

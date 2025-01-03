@@ -1,0 +1,79 @@
+.title-board-edit-label {
+  padding-top: 15px;
+  padding-bottom: 15px; 
+  padding-right: 15px; 
+  padding-left: 15px;
+  font-size: 40px;
+  color:#D7DEDC;
+  margin-bottom:5px;
+}
+
+.title-input-container {
+  border-radius: 5px;
+  color: #403942;
+  width: 700px;
+  font-size: 40px;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+}
+
+.edit-board-form{
+  display:flex; 
+  padding-top: 10px;
+  flex-flow:column;
+  align-content: center;
+  justify-content: center;
+  padding-left: 25px; 
+  padding-right: 25px;
+}
+
+
+.title-edit-container {
+  display:Grid;
+  grid-template-columns: auto auto;
+  padding-top: 10px;;
+  align-content:center;
+  justify-content: left;
+}
+
+
+.owner-edit-container {
+  font-size: 30px;
+  color: #D7DEDC;
+  margin-top:5px;
+  padding-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.owner-edit-container input {
+  font-size:30px;
+  color: #403942;
+  padding-left: 15px;
+  margin-left: 15px;
+  
+}
+.edit-board-submit-button {
+  font-size: 25px;
+  color:#f4fcfa; 
+  background-color: #403942;
+  border-radius: 25px;
+  margin-right: 15px; 
+  margin-left: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.exit-edit-board-button {
+  background-color: #403942;
+  border-radius: 25px;
+  color: #f4fcfa; 
+  margin-right: 15px;
+  margin-left: 15px;
+  font-size:25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

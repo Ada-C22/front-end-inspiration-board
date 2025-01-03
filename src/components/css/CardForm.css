@@ -1,0 +1,63 @@
+.card-form {
+  display:grid;
+  grid-template-rows: auto auto; 
+  margin-top: 2px;
+  margin-right: 2px;
+  margin-left: 2px; 
+  margin-bottom: 2px; 
+  border: 1px solid #555056;
+  background-color: #fbd9ff;
+  width:auto;
+  height: 200px;
+  border-radius: 25px;
+}
+.card-form h2 {
+  text-align: center;
+}
+
+.card-message-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 15px; 
+  margin-right: 15px;
+}
+
+.card-message-container label{
+  text-align: center;
+}
+
+.card-message-container textarea {
+  height: 50px; 
+  text-align:start;
+  text-wrap-mode:wrap;
+}
+
+.card-owner-container {
+  display: grid;
+  grid-template-rows: auto auto;
+  text-align:center;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 15px; 
+  margin-right: 15px;
+}
+
+.button-container {
+  display:flex;
+  align-content: end;
+  justify-content: center;
+}
+
+.add-card-submit-button {
+  background-color: #403942;
+  color: #f4fcfa;
+  border-radius: 25px;
+}
+.card-form-exit-button {
+  background-color: #403942;
+  width: 40px;
+  border-radius: 25px;
+  color: #f4fcfa; 
+}
