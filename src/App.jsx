@@ -8,7 +8,6 @@ const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.co
 
 
 
-
 /////////////////// helper functions for api calls/ rendering the page//////////////////////////////
 
 const getBoardsApi = () => {
@@ -49,7 +48,7 @@ const convertCardFromApi = (apiCard) => {
   delete jsCard.likes_count; 
   delete jsCard.board_id;
   return jsCard
-  };
+};
 
 
 const deleteCardApi = (id) => {
@@ -58,7 +57,7 @@ const deleteCardApi = (id) => {
   .catch(error=> {
     console.log(error);
   });
-}
+};
 
 const convertCardForApi = (jsxCard) => {
   const jsonCard = {
@@ -66,12 +65,15 @@ const convertCardForApi = (jsxCard) => {
     board_id : jsxCard.boardId, 
     likes_count : jsxCard.likesCount 
   };
+  delete jsonCard.boardId
+  delete jsonCard.likesCount
+
   return jsonCard
 };
 
-const updateCardDataApi = (cardData) => {
+const updateCardDataApi = (cardData) => {  
   const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString());
-  const jsonCard = convertCardForApi(cardData)
+  const jsonCard = convertCardForApi(cardData)  
   return axios.patch(patchCardEndpoint,jsonCard)
   .catch(error=> console.error(error));
 }
@@ -137,7 +139,7 @@ function App() {
       .then(response => {
         setActiveBoardData(prevState => ({
           ...prevState,
-          cards: [...prevState.cards, convertCardFromApi(response.data)]
+          cards: [...prevState.cards, convertCardFromApi(response.data.card)]
         }));
       })
       .catch(error => {
@@ -203,12 +205,13 @@ function App() {
       } else { 
         return card;
       }
-    });
-    
+    }
+  );
+  
     const newActiveBoardData = {
       ...activeBoardData,
       cards: newCardsData
-    }
+    }    
     updateCardDataApi(editedCardData);
     handleSetActiveBoard(newActiveBoardData);
   }
