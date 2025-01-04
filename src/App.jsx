@@ -4,6 +4,8 @@ import axios from 'axios'
 import ActiveBoard from './components/ActiveBoard'
 import './App.css'
 const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
+// const apiEndpointLink = process.env.REACT_APP_API_URL;
+
 
 
 /////////////////// helper functions for api calls/ rendering the page//////////////////////////////
