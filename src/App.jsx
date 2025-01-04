@@ -68,12 +68,15 @@ const convertCardForApi = (jsxCard) => {
     board_id : jsxCard.boardId, 
     likes_count : jsxCard.likesCount 
   };
+  delete jsonCard.boardId
+  delete jsonCard.likesCount
+
   return jsonCard
 };
 
-const updateCardDataApi = (cardData) => {
+const updateCardDataApi = (cardData) => {  
   const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString());
-  const jsonCard = convertCardForApi(cardData)
+  const jsonCard = convertCardForApi(cardData)  
   return axios.patch(patchCardEndpoint,jsonCard)
   .catch(error=> console.error(error));
 }
@@ -209,12 +212,13 @@ function App() {
       } else { 
         return card;
       }
-    });
-    
+    }
+  );
+  
     const newActiveBoardData = {
       ...activeBoardData,
       cards: newCardsData
-    }
+    }    
     updateCardDataApi(editedCardData);
     handleSetActiveBoard(newActiveBoardData);
   }
