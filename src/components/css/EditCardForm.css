@@ -75,3 +75,8 @@
   border-radius: 25px;
   color: #f4fcfa; 
 }
+
+.edit-board-button-container button:hover{
+  background-color: #282329;
+  color: #f4fcfa; 
+}

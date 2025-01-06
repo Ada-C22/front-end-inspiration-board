@@ -57,3 +57,8 @@
   padding-right:10px;
   font-size: 25px;
 }
+
+.button-container button:hover{
+  background-color: #282329;
+  color: #f4fcfa; 
+}

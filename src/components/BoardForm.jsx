@@ -1,46 +1,44 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
-import './css/BoardForm.css'
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import './css/BoardForm.css';
 
-const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
+const BoardForm = ({ handleCreateBoard, setCreateBoardState }) => {
   const [formData, setFormData] = useState({
     title: '',
     owner: ''
   });
 
   const handleChange = (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value
     });
-    
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleCreateBoard(formData);
     setFormData({
-      title:'',
-      owner:'',
+      title: '',
+      owner: '',
     });
-    setCreateBoardState(false)
+    setCreateBoardState(false);
   };
 
-  const handleCreateBoardExitButton =(event)=> {
+  const handleCreateBoardExitButton = (event) => {
     event.preventDefault();
     setFormData({
-      title:'',
-      owner:'',
+      title: '',
+      owner: '',
     });
-    setCreateBoardState(false)
+    setCreateBoardState(false);
   };
 
   return (
     <section className='board-form-container'>
-      <span>
       <form onSubmit={handleSubmit}>
-        <section className = 'form-container'>
+        <section className='form-container'>
           <div className='board-form-title-section'>
             <label htmlFor='title'>Board Title:</label>
             <input
@@ -55,7 +53,7 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
           </div>
           <div className='board-form-owner-section'>
             <label htmlFor='owner'>Board Owner:</label>
-            <input 
+            <input
               className='board-form-owner-input'
               type='text'
               id='owner'
@@ -67,17 +65,17 @@ const BoardForm = ({handleCreateBoard, setCreateBoardState}) => {
           </div>
         </section>
         <section className='button-container'>
-        <button className='create-board-submit-button' type='submit'>Create Board</button>
-        <button className= 'create-board-exit-button' type='exit' onClick={handleCreateBoardExitButton}>X</button>
+          <button className='create-board-submit-button' type='submit'>Create Board</button>
+          <button className='create-board-exit-button' type='button' onClick={handleCreateBoardExitButton}>X</button>
         </section>
       </form>
-      </span>
     </section>
-  )
+  );
 };
-export default BoardForm;
 
-BoardForm.propTypes= {
+BoardForm.propTypes = {
   handleCreateBoard: PropTypes.func.isRequired,
   setCreateBoardState: PropTypes.func.isRequired,
-}
+};
+
+export default BoardForm;

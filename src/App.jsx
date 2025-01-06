@@ -1,39 +1,36 @@
-import { useState, useEffect } from 'react'
-import BoardList from'./components/BoardList'
-import axios from 'axios'
-import ActiveBoard from './components/ActiveBoard'
-import './App.css'
-const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com"
-// const apiEndpointLink = process.env.REACT_APP_API_URL;
-
-
+import { useState, useEffect } from 'react';
+import BoardList from './components/BoardList';
+import axios from 'axios';
+import ActiveBoard from './components/ActiveBoard';
+import './App.css';
 
 /////////////////// helper functions for api calls/ rendering the page//////////////////////////////
+const apiEndpointLink = "https://inspiration-board-app-bd54c001ba81.herokuapp.com";
 
 const getBoardsApi = () => {
-  const getBoardsEnpoint = apiEndpointLink + '/boards/'
+  const getBoardsEnpoint = apiEndpointLink + '/boards/';
   return axios.get(getBoardsEnpoint)
   .then((response) => {
-    const apiBoards = response.data
-    return apiBoards
+    const apiBoards = response.data;
+    return apiBoards;
   })
   .catch((error) =>  console.error(error));
 };
 
 const getActiveBoardApi = (activeBoardId) => {
-  const getActiveBoardEnpoint = apiEndpointLink + '/boards' +'/'+ (activeBoardId.toString())+'/cards'
+  const getActiveBoardEnpoint = apiEndpointLink + '/boards' +'/'+ (activeBoardId.toString())+'/cards';
   return axios.get(getActiveBoardEnpoint)
   .then((response) => {
-    const apiActiveBoard = response.data
-    const apiCards = apiActiveBoard.cards
+    const apiActiveBoard = response.data;
+    const apiCards = apiActiveBoard.cards;
     const jsCards = apiCards.map(convertCardFromApi);
     const activeBoard = {
       id : apiActiveBoard.id, 
       owner : apiActiveBoard.owner,
       title : apiActiveBoard.title, 
       cards: jsCards
-    }
-    return activeBoard
+    };
+    return activeBoard;
   })
   .catch((error) =>  console.error(error));
 };
@@ -42,17 +39,15 @@ const convertCardFromApi = (apiCard) => {
   const jsCard = {
     ... apiCard, 
     boardId: apiCard.board_id,
-    likesCount : apiCard.likes_count ,
-
+    likesCount : apiCard.likes_count
   };
   delete jsCard.likes_count; 
   delete jsCard.board_id;
-  return jsCard
+  return jsCard;
 };
 
-
 const deleteCardApi = (id) => {
-  const deleteCardEndpoint = apiEndpointLink + '/cards' + '/' + (id.toString())
+  const deleteCardEndpoint = apiEndpointLink + '/cards' + '/' + (id.toString());
   return axios.delete(deleteCardEndpoint)
   .catch(error=> {
     console.log(error);
@@ -63,41 +58,37 @@ const convertCardForApi = (jsxCard) => {
   const jsonCard = {
     ... jsxCard, 
     board_id : jsxCard.boardId, 
-    likes_count : jsxCard.likesCount 
+    likes_count : jsxCard.likesCount
   };
-  delete jsonCard.boardId
-  delete jsonCard.likesCount
+  delete jsonCard.boardId;
+  delete jsonCard.likesCount;
 
-  return jsonCard
+  return jsonCard;
 };
 
 const updateCardDataApi = (cardData) => {  
   const patchCardEndpoint = apiEndpointLink + '/cards' + '/' + (cardData.id.toString());
-  const jsonCard = convertCardForApi(cardData)  
-  return axios.patch(patchCardEndpoint,jsonCard)
+  const jsonCard = convertCardForApi(cardData);  
+  return axios.patch(patchCardEndpoint, jsonCard)
   .catch(error=> console.error(error));
-}
+};
 
 const createBoardApi = (boardData) => {
   const postBoardEndPoint = apiEndpointLink + '/boards/';
   return axios.post(postBoardEndPoint, boardData);
 };
 
-
 const updateBoardsDataApi = (boardData) => {
   const putBoardTitleEndpoint = apiEndpointLink + '/boards' + '/' + (boardData.id.toString());
-  return axios.put(putBoardTitleEndpoint,({'title':boardData.title, 'owner':boardData.owner}))
-
-
+  return axios.put(putBoardTitleEndpoint, ({'title': boardData.title, 'owner': boardData.owner}))
   .catch(error=> console.error(error));
-}
-
+};
 
 const deleteBoardApi = (id) => {
   const deleteBoardEnpoint = apiEndpointLink + '/boards' + '/' +(id.toString());
   return axios.delete(deleteBoardEnpoint)
   .catch(error=>console.error(error));
-}
+};
 
 ////////////////////////// APP //////////////////////////////
 
@@ -106,8 +97,8 @@ function App() {
   const [activeBoardData, setActiveBoardData] = useState({});
   const [boardsData, setBoardsData] = useState([]);
   const [sortOption, setSortOption] = useState('id');
-  const [activeBoardOpen,openActiveBoard] = useState(false)
-  const [createBoardState,setCreateBoardState] = useState(false)
+  const [activeBoardOpen, openActiveBoard] = useState(false);
+  const [createBoardState, setCreateBoardState] = useState(false);
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
@@ -131,10 +122,10 @@ function App() {
     setActiveBoardId(id);
     openActiveBoard(true);
     sortCards(sortOption);
-  }
+  };
 
   const addCard = (card) => {
-    console.log('140 liine', card)
+    console.log('140 line', card);
     axios.post(`${apiEndpointLink}/boards/${activeBoardId}/cards`, card)
       .then(response => {
         setActiveBoardData(prevState => ({
@@ -159,7 +150,9 @@ function App() {
       sortedCards.sort((a, b) => a.id - b.id);
     } else if (sortOption === 'likes') {
       sortedCards.sort((a, b) => b.likesCount - a.likesCount);
-    } else if (sortOption === 'alphabetically') {
+    } else if (sortOption === 'owner') {
+      sortedCards.sort((a, b) => a.owner.localeCompare(b.owner));
+    } else if (sortOption === 'message') {
       sortedCards.sort((a, b) => a.message.localeCompare(b.message));
     }
 
@@ -167,14 +160,15 @@ function App() {
       ...prevState,
       cards: sortedCards
     }));
-  }
+  };
+
   const handleSetActiveBoard = (data) => {
     const updatedActiveBoardData = {
-      ... data
-    }
+      ...data
+    };
 
-    setActiveBoardData(updatedActiveBoardData)};
-  
+    setActiveBoardData(updatedActiveBoardData);
+  };
   
   const handleDeleteCard = (id) => {
     deleteCardApi(id);
@@ -182,7 +176,7 @@ function App() {
       return card.id !== id; 
     });
     activeBoardData.cards = newCards;
-    handleSetActiveBoard(activeBoardData)
+    handleSetActiveBoard(activeBoardData);
   };
 
   const handleLikeCard = (id) => {
@@ -190,12 +184,11 @@ function App() {
       if (card.id === id) {
         card.likesCount++;
       }
-      updateCardDataApi(card)
+      updateCardDataApi(card);
       return card;
-
     });
     activeBoardData.cards = newData; 
-    handleSetActiveBoard(activeBoardData)
+    handleSetActiveBoard(activeBoardData);
   };
 
   const handleEditCard = (editedCardData) => {
@@ -205,22 +198,21 @@ function App() {
       } else { 
         return card;
       }
-    }
-  );
+    });
   
     const newActiveBoardData = {
       ...activeBoardData,
       cards: newCardsData
-    }    
+    };    
     updateCardDataApi(editedCardData);
     handleSetActiveBoard(newActiveBoardData);
-  }
+  };
 
   const handleCreateBoard = async (newBoardData) => {
     try {
       const createdBoard = await createBoardApi(newBoardData);
-      handleChangeActiveBoard(createdBoard.data.board.id)
-      getBoardsList()
+      handleChangeActiveBoard(createdBoard.data.board.id);
+      getBoardsList();
     } catch (error) {
       console.error('Failed to create board:', error);
     }
@@ -234,24 +226,24 @@ function App() {
         return board;
       }
     });
-    const newActiveBoardData= {
+    const newActiveBoardData = {
       ...activeBoardData,
-      title:editedBoardData.title,
-      owner:editedBoardData.owner,
-    }
+      title: editedBoardData.title,
+      owner: editedBoardData.owner
+    };
     updateBoardsDataApi(editedBoardData);
-    setActiveBoardData(newActiveBoardData)
+    setActiveBoardData(newActiveBoardData);
     setBoardsData(newBoardsData);
   };
 
   const handleDeleteBoard = (id) => {
-    deleteBoardApi(id)
+    deleteBoardApi(id);
     const newBoardsData = boardsData.filter((board) => {
       return board.id !== id; 
     });
     if (activeBoardId === id) {
-      openActiveBoard(false)
-    };
+      openActiveBoard(false);
+    }
     setBoardsData(newBoardsData);
   };
   
@@ -261,7 +253,7 @@ function App() {
         <div className='board-list-container'>
           <BoardList 
             Boards={boardsData} 
-            handleChangeActiveBoard = {handleChangeActiveBoard}
+            handleChangeActiveBoard={handleChangeActiveBoard}
             activeBoardId={activeBoardId}
             createBoardState={createBoardState}
             setCreateBoardState={setCreateBoardState}
@@ -279,18 +271,17 @@ function App() {
               handleEditCard={handleEditCard}
               handleEditBoard={handleEditBoard}
               handleDeleteBoard={handleDeleteBoard}
-              addCard = {addCard}
-              sortOption = {sortOption}
-              handleSortChange = {handleSortChange} 
-              sortCards = {sortCards}
-              openActiveBoard= {openActiveBoard}
+              addCard={addCard}
+              sortOption={sortOption}
+              handleSortChange={handleSortChange} 
+              sortCards={sortCards}
+              openActiveBoard={openActiveBoard}
             />
           </div>
         </section>
       }
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
