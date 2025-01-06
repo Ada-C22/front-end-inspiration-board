@@ -52,7 +52,7 @@ const CardForm = ({ addCard, setAddCardState }) => {
                 />
             </div>
             <div className='card-owner-container'>
-                <label htmlFor='Owner'>Authors Name :</label>
+                <label htmlFor='owner'>Authors Name :</label>
                 <input
                     type='text'
                     id='owner'

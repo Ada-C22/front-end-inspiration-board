@@ -44,7 +44,7 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
     <form onSubmit={handleSubmit}>
     <div className='edit-board-form'>
       <div className='title-edit-container'>
-        <label className='title-board-edit-label' htmlFor='Title'>Board Title |</label>
+        <label className='title-board-edit-label' htmlFor='title'>Board Title |</label>
         <input
             className='title-input-container'
             type='text'
@@ -58,7 +58,7 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
       </div>
       <div>
         <div className='owner-edit-container'>
-          <label htmlFor='Title'>Board Owner |</label>
+          <label htmlFor='owner'>Board Owner |</label>
           <input
               className='Owner-input-container'
               type='text'

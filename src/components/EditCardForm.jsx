@@ -55,7 +55,7 @@ const EditCardForm = ({id, boardId, likesCount, message, owner, handleEditCard,s
             />
         </div>
         <div className='owner-container'>
-            <label htmlFor='Owner'>Name:</label>
+            <label htmlFor='owner'>Name:</label>
             <input
                 className='owner-input-container'
                 type='text'
