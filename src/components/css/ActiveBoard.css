@@ -92,7 +92,12 @@ ul {
   color: white; 
   background-color: transparent;
   outline-color: white;
+}
 
+.exit-active-board-button:hover {
+  color: white; 
+  background-color: #422931;
+  outline-color: white;
 }
 
 .line-one {

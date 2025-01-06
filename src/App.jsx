@@ -99,11 +99,13 @@ function App() {
   const [sortOption, setSortOption] = useState('id');
   const [activeBoardOpen, openActiveBoard] = useState(false);
   const [createBoardState, setCreateBoardState] = useState(false);
+  const [sortBoardsOption, setBoardsSortOption] = useState('id')
     
   const getBoardsList = () => {
     getBoardsApi().then(boards => {
       setBoardsData(boards);
-    });
+    })
+    sortBoards(sortBoardsOption);
   };
   useEffect(()=> {
     getBoardsList();
@@ -161,6 +163,22 @@ function App() {
       cards: sortedCards
     }));
   };
+
+  const handleBoardSortChange = (event) => {
+    setBoardsSortOption(event.target.value);
+    sortBoards(event.target.value);
+  };
+
+  const sortBoards = (sortBoardsOption) => {
+    const sortedBoards = [...boardsData];
+    if (sortBoardsOption === 'boardId') {
+      sortedBoards.sort((a, b) => a.id - b.id);
+    } else if (sortBoardsOption === 'boardOwner') {
+      sortedBoards.sort((a, b) => a.owner.localeCompare(b.owner));
+    } else if (sortBoardsOption === 'boardTitle') {
+      sortedBoards.sort((a, b) => a.title.localeCompare(b.title));
+    }
+    setBoardsData(sortedBoards)};
 
   const handleSetActiveBoard = (data) => {
     const updatedActiveBoardData = {
@@ -257,7 +275,12 @@ function App() {
             activeBoardId={activeBoardId}
             createBoardState={createBoardState}
             setCreateBoardState={setCreateBoardState}
-            handleCreateBoard={handleCreateBoard}/>
+            handleCreateBoard={handleCreateBoard}
+            activeBoardOpen={activeBoardOpen}
+            sortBoards={sortBoards}
+            sortBoardsOption={sortBoardsOption}
+            handleBoardSortChange={handleBoardSortChange}
+            />
           </div>
       </section>
 

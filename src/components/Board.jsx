@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import './css/Board.css';
 
-const Board = ({ id, owner, title, handleChangeActiveBoard, activeBoardId }) => {
+const Board = ({ id, owner, title, handleChangeActiveBoard, activeBoardId, activeBoardOpen}) => {
 
   const setClass = () => {
-    if (id === activeBoardId) {
+    if (id === activeBoardId & activeBoardOpen === true) {
       return 'active-board';
     }
     return 'inactive-board';
@@ -15,6 +15,8 @@ const Board = ({ id, owner, title, handleChangeActiveBoard, activeBoardId }) => 
   const onClickActiveBoard = () => {
     handleChangeActiveBoard(id);
   };
+
+
 
   return (
     <button className={boardClass} onClick={onClickActiveBoard}>

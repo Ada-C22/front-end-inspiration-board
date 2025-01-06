@@ -3,9 +3,10 @@ import './css/BoardList.css';
 import Board from './Board';
 import BoardForm from './BoardForm';
 import { useEffect } from 'react';
+import SortBoardsInput from './sortBoardsInput';
 
 
-const BoardList = ({ Boards, handleChangeActiveBoard, activeBoardId, setCreateBoardState, createBoardState, handleCreateBoard }) => {
+const BoardList = ({ Boards, handleChangeActiveBoard, activeBoardId, setCreateBoardState, createBoardState, handleCreateBoard, activeBoardOpen, sortBoards, sortBoardsOption, handleBoardSortChange }) => {
   const handleClickCreateBoard = () => {
     setCreateBoardState(true);    
   };
@@ -22,22 +23,32 @@ const BoardList = ({ Boards, handleChangeActiveBoard, activeBoardId, setCreateBo
           owner={board.owner} 
           handleChangeActiveBoard={handleChangeActiveBoard}
           activeBoardId={activeBoardId}
+          activeBoardOpen={activeBoardOpen}
         />
       );
     });
   };
 
   useEffect (() => {
-  }, [createBoardState]);
+  }, [createBoardState], [activeBoardOpen]);
 
   return (
   <section className="board-list-component">
-    <h1 className="board-list-title">Vision Boards</h1>
+    <span className='title-sort-container'>
+      <h1 className="board-list-title">Vision Boards</h1>
+      <SortBoardsInput 
+        className='sort-boards-input'
+        sortBoards={sortBoards}
+        sortBoardsOption={sortBoardsOption}
+        handleBoardSortChange={handleBoardSortChange}
+      />
+    </span>
     <div>
       <ul className="board-list">
         <span className='board-list-index'>
           <p className='tile-column'>Board Title</p>
           <p className='owner-column'>Board Owner</p>
+
         </span>
         {getVisionBoardList(Boards)}
         {createBoardState === false && 
@@ -63,7 +74,11 @@ BoardList.propTypes = {
   activeBoardId: PropTypes.number.isRequired,
   createBoardState: PropTypes.bool.isRequired,
   setCreateBoardState: PropTypes.func.isRequired,
-  handleCreateBoard: PropTypes.func.isRequired,   
+  handleCreateBoard: PropTypes.func.isRequired,
+  activeBoardOpen: PropTypes.bool.isRequired,
+  sortBoards: PropTypes.func.isRequired,
+  sortBoardsOption: PropTypes.string.isRequired,
+  handleBoardSortChange: PropTypes.func.isRequired,   
 };    
 
 export default BoardList;
