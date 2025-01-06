@@ -55,3 +55,8 @@
   font-style:italic;
   color: #7A3B69
 }
+
+.card-buttons button:hover{
+  background-color: #282329;
+  color: #f4fcfa; 
+}

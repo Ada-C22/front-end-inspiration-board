@@ -40,3 +40,7 @@ li {
   background-color: #403942;
   justify-items: center;
 }
+.create-board-button:hover{
+  background-color: #282329;
+  color: #f4fcfa; 
+}
