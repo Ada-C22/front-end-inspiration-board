@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types'
-import './css/EditBoardForm.css'
+import PropTypes from 'prop-types';
+import './css/EditBoardForm.css';
 
-
-const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
-
+const EditBoardForm = ({ id, title, owner, handleEditBoard, setBoardEditing }) => {
   const [formData, setFormData] = useState({
-    id:id, 
+    id: id,
     title: title,
     owner: owner,
   });
@@ -14,38 +12,38 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
-        ...formData,
-        [name]: value
+      ...formData,
+      [name]: value,
     });
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const newBoardInfo = {
-      id:id,
+      id: id,
       title: formData.title,
       owner: formData.owner,
-    }
+    };
     handleEditBoard(newBoardInfo);
     setBoardEditing(false);
   };
 
-
-  const handleExitEditBoard =(event) => {
-    event.preventDefault()
+  const handleExitEditBoard = (event) => {
+    event.preventDefault();
     setFormData({
-      id:id, 
+      id: id,
       title: title,
       owner: owner,
     });
-    setBoardEditing(false);    
-  }
+    setBoardEditing(false);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
-    <div className='edit-board-form'>
-      <div className='title-edit-container'>
-        <label className='title-board-edit-label' htmlFor='title'>Board Title |</label>
-        <input
+      <div className='edit-board-form'>
+        <div className='title-edit-container'>
+          <label className='title-board-edit-label' htmlFor='title'>Board Title |</label>
+          <input
             className='title-input-container'
             type='text'
             id='title'
@@ -53,13 +51,12 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
             value={formData.title}
             onChange={handleChange}
             required
-        />
-        
-      </div>
-      <div>
-        <div className='owner-edit-container'>
-          <label htmlFor='owner'>Board Owner |</label>
-          <input
+          />
+        </div>
+        <div>
+          <div className='owner-edit-container'>
+            <label htmlFor='owner'>Board Owner |</label>
+            <input
               className='Owner-input-container'
               type='text'
               id='owner'
@@ -67,33 +64,24 @@ const EditBoardForm = ({id, title, owner, handleEditBoard,setBoardEditing}) => {
               value={formData.owner}
               onChange={handleChange}
               required
-          />
+            />
+          </div>
+        </div>
+        <div className='edit-board-button-container'>
+          <button className='edit-board-submit-button' type='submit'>Update Board</button>
+          <button type='button' className='exit-edit-board-button' onClick={handleExitEditBoard}>X</button>
         </div>
       </div>
-      <div className='edit-board-button-container'>
-          <button className= 'edit-board-submit-button' type='submit'>Update Board</button>
-          <button type='exit-edit-board' className='exit-edit-board-button' onClick={handleExitEditBoard}>X</button>
-      </div>
+    </form>
+  );
+};
 
-    </div>
-    
-
-
-</form>
-
-  )    
-}
-
-export default EditBoardForm
+export default EditBoardForm;
 
 EditBoardForm.propTypes = {
-  id: PropTypes.number.isRequired, 
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired, 
+  owner: PropTypes.string.isRequired,
   handleEditBoard: PropTypes.func.isRequired,
   setBoardEditing: PropTypes.func.isRequired,
-}
-
-
-
-
+};
