@@ -36,12 +36,13 @@ const BoardList = ({ Boards, handleChangeActiveBoard, activeBoardId, setCreateBo
   <section className="board-list-component">
     <span className='title-sort-container'>
       <h1 className="board-list-title">Vision Boards</h1>
-      <SortBoardsInput 
-        className='sort-boards-input'
+      <div className='sort-boards-container'>
+        <SortBoardsInput 
         sortBoards={sortBoards}
         sortBoardsOption={sortBoardsOption}
         handleBoardSortChange={handleBoardSortChange}
-      />
+        />
+      </div>
     </span>
     <div>
       <ul className="board-list">
