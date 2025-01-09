@@ -1,0 +1,40 @@
+button {
+  margin-top: 2px;
+  border-radius: 10px;
+}
+
+.active-board{
+  background-color: #cab4ce;
+}
+
+.active-board:hover{
+  background-color: #9a8a9c;
+}
+
+.inactive-board:hover{
+  background-color: #d7dedc;
+}
+
+.board-details-container {
+  display: grid; 
+  grid-template-columns: 50% 50%;
+  justify-items: left;
+  border-radius: 25px;
+  color:#563440;
+  font-size:medium;
+}
+
+
+.board-title {
+  font-size:25px;
+}
+
+.board-owner {
+  font-size: 25px;
+}
+
+button:first-of-type {
+  border-top-left-radius:25px; 
+  border-top-right-radius: 25px;
+}
+

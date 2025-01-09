@@ -1,0 +1,64 @@
+.form-container {
+  display: grid; 
+  grid-template-columns: 50% 50%;
+  justify-items: left;
+  color:aliceblue;
+  padding-left: 10px;
+  font-size:medium;
+  background-color:#563440;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+
+.form-container >.board-form-owner-section {
+  display:grid;
+  grid-template-columns: 40% 60%;
+  align-items:center;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+.form-container >.board-form-title-section {
+  display:grid;
+  grid-template-columns: 40% 60%;
+  align-items:center;
+  padding-top:10px;
+  padding-bottom: 10px;
+}
+
+.form-container label {
+  font-size: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-container input {
+  background-color: #9A879D;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size:20px;
+  color: white;
+}
+
+.create-board-submit-button {
+  background-color:#403942;
+  font-size: 25px;
+  color:#f4fcfa;
+  border-radius: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.create-board-exit-button {
+  background-color:#403942;
+  color:#f4fcfa;
+  border-radius: 25px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 25px;
+}
+
+.button-container button:hover{
+  background-color: #282329;
+  color: #f4fcfa; 
+}

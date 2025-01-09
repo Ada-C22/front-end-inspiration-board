@@ -1,0 +1,36 @@
+.sort-boards-container {
+  font-size: 20px;
+  color: #f4fcfa;
+}
+.sort-boards-container label{
+  padding-left: 15px;
+  padding-right:15px;
+}
+
+.sort-boards-container select {
+  padding-left:15px;
+  font-size:20px;
+  color: #563440;
+}
+
+.re-sort-button {
+  border-radius: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-left:15px;
+  padding-right:15px;
+  font-size:20px;
+  color:#563440;
+  background-color: #929896;
+}
+
+.re-sort-button:hover {
+  border-radius: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-left:15px;
+  padding-right:15px;
+  font-size:20px;
+  color:#2e1d23;
+  background-color: #6f7472;
+}
