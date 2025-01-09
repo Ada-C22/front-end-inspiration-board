@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './css/SortCardsInput.css';
 
 const SortCardsInput = ({ sortOption, handleSortChange, sortCards }) => {
-  const handleReSort = () => {
+  const handleReSort = (event) => {
     sortCards(sortOption);
   };
 
