@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+.cards-container{
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  background-color: #ffb6c1;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.cards-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+  
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+  
+  .card-message {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .card-likes {
+    font-size: 0.95rem;
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .card-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .card-buttons button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .card-buttons button:hover {
+    background-color: #43a047;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-buttons .delete-btn {
+    background-color: #e57373;
+  }
+  
+  .card-buttons .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .card-buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+  }
+  
+  .sort-container {
+    margin: 20px 0;
+    background-color: #db6093;
+    border-radius: 10px;
+  }
+  
+  .sort-container label {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .sort-container select {
+    font-family: "Jersey 15", serif;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #FFF0F5;
+    color: black;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .sort-container select:hover {
+    border-color: #4caf50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sort-container select:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  }
+  
