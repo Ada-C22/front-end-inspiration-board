@@ -1,0 +1,32 @@
+.main-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-container {
+  padding-bottom: 5rem; /* Footer height */
+}
+
+.flex-container {
+  /* display: flex;
+  flex-direction: row; */
+  display: flex; /* Align forms horizontally */
+  justify-content: center; /* Center the forms */
+  align-items: flex-start; /* Align forms to the top */
+  gap: 2rem; /* Add space between the forms */
+  margin: 1rem 0; /* Add spacing around the container */
+}
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}

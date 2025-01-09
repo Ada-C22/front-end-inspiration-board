@@ -1,0 +1,31 @@
+.new-board-form {
+    display: grid;
+    align-items: center;
+}
+.show-hide-button {
+    margin-top: 1rem;
+    align-self: center;
+}
+
+.submitButton {
+    margin-top: 1rem;
+    align-self: center;
+}
+
+.preview p {
+    background-color: white;
+    border: none;
+}
+
+/* Error Highlight for Input */
+input.error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}

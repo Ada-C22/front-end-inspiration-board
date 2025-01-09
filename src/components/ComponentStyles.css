@@ -1,0 +1,18 @@
+.component-section {
+  flex: 100%;
+  position: relative;
+  border-radius: 10px; 
+  padding: 1rem;
+  margin: 0.5rem;
+  font-family: Open Sans, sans-serif;
+}
+.component-title {
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: 'Comic Sans MS', 'Chalkboard', cursive; /* Adjust font as needed */
+  text-align: center;
+  padding: 0.2em 0.5em;
+  border: 2px solid black;
+  box-shadow: -15px 7px 1px #000;
+}
