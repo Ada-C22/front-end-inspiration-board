@@ -1,0 +1,4 @@
+.board-tabs {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,118 @@
+.card-box {
+    height: 120px;
+    width: 120px;
+    padding: 2em;
+    background-color: red;
+    border-radius: 8px;
+    position: relative;
+
+	display: grid;
+}
+
+.delete {
+    background-color: transparent;
+    color: black;
+    padding: 5px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor:pointer;
+}
+
+.delete:hover {
+    color: red;
+    border: none;
+}
+.message {
+
+	max-width: 100px;
+    max-height: 100px;
+    /*overflow-y: auto; Hide any overflow content*/
+    /*text-overflow: ellipsis; Add ellipsis (...) for overflow text*/
+    white-space: nowrap; /* Prevent text from wrapping */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold; /* U
+
+	/*flex: grid;*/
+	/*max-width: 100px;
+	max-height: 80px;*/
+	/*width: 100%;
+	height: 100%;*/
+	/*justify-content: top;
+
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+	font-style: bold;*/
+}
+
+.likes-container {
+	display: flex;
+	max-width: 100px;
+	max-height: 30px;
+	width: 100%;
+	height: 100%;
+
+    align-items: center;
+	
+	justify-content: center;
+
+	margin-top: 2px;
+    margin-bottom: 0;
+
+}
+.likes-count{
+
+	margin-top: 0rem;
+    margin-bottom: 0rem;
+
+	margin-left: 0.5rem;
+    font-size: 0.8rem;
+
+
+    color: black;
+
+	padding: 5px;
+	max-width: 50px;
+	width: 100%;
+
+}
+
+.plus1 {
+	font-size: 0.8rem;
+	color: black;
+	cursor: pointer;
+
+	padding: 5px;
+	max-width: 50px;
+	width: 100%;
+
+	background: transparent;
+}
+
+.card-box.c1 {
+    background-color: rgb(255, 128, 128);
+
+}
+.card-box.c2 {
+    background-color: rgb(247, 170, 69);
+}
+
+.card-box.c3 {
+    background-color: rgb(255, 228, 153);
+}
+.card-box.c4 {
+    background-color: green;
+}
+.card-box.c5 {
+    background-color: rgb(77, 116, 243);
+}
+
+.card-box.c6 {
+    background-color: rgb(141, 77, 243);
+}

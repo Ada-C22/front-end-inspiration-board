@@ -1,0 +1,42 @@
+input {
+    background-color: rgb(233, 231, 231);
+    height:20px;
+    color:black;
+}
+
+.empty {
+    border-color: rgb(212, 97, 97);
+    border-width: 2px;
+}
+
+.form-field {
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+}
+.submit-container {
+    text-align: center;
+}
+
+.submit-button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    height:40px;
+    margin-top: 1em;
+    color:white;
+}
+
+.submit-button:hover {
+    background-color: rgb(15, 137, 15);
+}
+.message {
+    text-align: center;
+    white-space: pre-line;
+    margin-top: 20px;
+}
