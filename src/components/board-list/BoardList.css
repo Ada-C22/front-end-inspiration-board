@@ -1,0 +1,60 @@
+.board-list-container {
+  margin: 10px 0 0 10px;
+  width: 300px;
+  padding: 10px;
+  background: #ffffff;
+  position: absolute;
+  top: 120px;
+  left: 10px;
+}
+
+.heading-board {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif cursive;
+  border: 2px solid black;
+  text-align: center;
+  box-shadow: -10px 10px 0px black;
+}
+
+.board-list {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid #000000;
+  background: #ffffff;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.board-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.board-list::-webkit-scrollbar-thumb {
+  background-color: #cccccc;
+  border-radius: 4px;
+}
+
+.board-list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin: 70px 0;
+}
+
+.board-list li {
+  font-size: 1.2rem;
+  background: #ffffff;
+  box-shadow: 2px 2px 0px #000000;
+  cursor: pointer;
+  text-align: left;
+}
+
+.board-list li:hover {
+  background-color: #fffb00;
+  transition: background-color 0.3s ease-in-out;
+}

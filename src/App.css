@@ -1,0 +1,119 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 50px;
+  background-color: yellow;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(-5deg);
+}
+
+.App-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: black;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.selected-board-container {
+  flex: 1;
+  margin-left: 10px 0 0 10px;
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  left: 450px;
+}
+
+.heading-board {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.new-board-form-container {
+  flex: 1;
+  margin-left: 10px 0 0 10px;
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  left: 850px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hide-or-show-button {
+  margin-top: 8px;
+  border: 1px solid black;
+}
+
+.card-list-container {
+  flex: 1;
+  margin-left: 10px 0 0 10px;
+  padding: 10px;
+  position: absolute;
+  top: 220px;
+  left: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading-card {
+  text-align: left;
+  margin-bottom: 10px;
+  border: 2px solid black;
+  text-align: center;
+  box-shadow: 10px 10px 0px black;
+}
+
+.new-card-form-container {
+  flex: 1;
+  margin-left: 10px;
+  padding: 10px;
+  position: relative;
+  top: 40px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-reset-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
