@@ -1,0 +1,132 @@
+.new-board-form-container {
+    position: relative;
+    width: 300px;
+    height: 350px; 
+    padding: 30px;
+    background: #82f9f9;
+    background-image: 
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 24px,
+            rgba(0,0,0,0.05) 24px,
+            rgba(0,0,0,0.05) 25px
+        );
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 
+        2px 3px 20px rgba(0,0,0,0.2),
+        0 0 60px rgba(0,0,0,0.1) inset;
+    transform: rotate(-2deg);
+    z-index: 1000;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.new-board-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.1);
+    pointer-events: none;
+}
+
+/* Form Layout */
+.new-board-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Typography */
+.form-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+    color: #111011;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-label,
+.form-input,
+.toggle-form-btn,
+.submit-btn {
+    font-family: 'Permanent Marker', cursive;
+}
+
+/* Form Elements */
+.form-label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    margin-top: 10px;
+}
+
+.form-input {
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 8px 0;
+    color: #333;
+    margin-top: 5px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-bottom: 1px solid #5c4b37;
+}
+
+.form-input::placeholder {
+    opacity: 0.6;
+}
+
+/* Buttons */
+.toggle-form-btn,
+.submit-btn {
+        background: #e752bf;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        margin: 1rem;
+        border-radius: 4px;
+        font-family: 'Permanent Marker', cursive;
+        cursor: pointer;
+        transition: all 0.2s ease;
+}
+
+.toggle-form-btn:hover,
+.submit-btn:hover {
+    background: #9238ad;
+    transform: scale(1.02) rotate(0deg);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .new-board-form-container {
+        width: 90%;
+        max-width: 300px;
+        padding: 15px;
+        top: 10px;
+    }
+
+    .toggle-form-btn,
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-board-form-container {
+        right: 10px;
+        top: 20px;
+        padding: 10px;
+    }
+
+    .form-input,
+    .toggle-form-btn,
+    .submit-btn {
+        font-size: 14px;
+    }
+}
