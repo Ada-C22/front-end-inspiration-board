@@ -1,0 +1,59 @@
+h1,
+h2,
+button,
+.create-btn {
+  font-family: "Coiny", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  width: 70%;
+  margin: 2rem auto 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h2 {
+  color: #c161e8;
+
+  position: relative;
+  top: 15%;
+  right: -15%;
+  
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-panel {
+  width: 20%;
+}
+
+button,
+.create-btn {
+  width: 100%;
+  padding: .75rem 1rem;
+  margin: 1.2em 0 .5rem;
+
+  border-radius: 50px;
+  border: 3px solid #004aad;
+
+  display: block;
+  outline: none;
+}
+
+label {
+  font-size: 1.15em;
+}
+
+.cards-container {
+  width: 75%;
+}

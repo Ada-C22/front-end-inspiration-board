@@ -1,0 +1,42 @@
+.NewBoardForm {
+    width: 90%;
+}
+
+.input-col {
+    margin: .5rem 0;
+}
+
+.input-col label {
+    font-weight: 600;
+}
+
+.input-col input{
+    font-size: 1.25rem;
+    font-family: 'Barlow Condensed', sans-serif;
+
+    width: 100%;
+    padding: .25rem;
+
+    background-color: #c0e6ff;
+    
+    border: 2px solid #607a7b;
+    border-radius: 5px;
+
+    display: block;
+    outline: none;
+}
+
+.create-btn,
+.board-btn {
+    background: linear-gradient(180deg, #4ad6ef, #d0ffbc);
+    text-align: center;
+}
+
+.hide-btn {
+    font-size: .72rem;
+
+    width: initial;
+    margin: .65em auto 0;
+    padding: .4rem;
+    
+}
